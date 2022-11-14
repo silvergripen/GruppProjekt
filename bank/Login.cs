@@ -13,14 +13,24 @@ namespace bank
         private Dictionary<string, bool> isAdmin = new Dictionary<string, bool>();
         public Login()
         {
-            userName.Add("Kenneth", 1);
-            userPassword.Add("Kenneth", "Pass123");
-            isAdmin.Add("Kenneth", true);
+            userName.Add("kenneth", 1);
+            userPassword.Add("kenneth", "pass123");
+            isAdmin.Add("kenneth", true);
         }
         public bool ValidatePassword(string username, string password)
         {
             return userPassword.Any(x => x.Key == username && x.Value == password);
 
         }
+        public void userInput()
+        {
+            Console.WriteLine("Skriv ditt användarnamn");
+            var inputUName = Console.ReadLine();
+            Console.WriteLine("Skriv ditt lösenord");
+            var inputUPass = Console.ReadLine();
+            var isValid = ValidatePassword(inputUName, inputUPass);
+            Console.WriteLine(isValid? "Du är inloggad" : "Gissat fel");
+        }
+
     }
 }
