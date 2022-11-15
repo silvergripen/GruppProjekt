@@ -6,5 +6,14 @@ namespace bank
 {
     class SavingAccount
     {
+        private int accountNr;
+        public SavingAccount()
+        {
+
+        }
+        //public int AddAccount()
+        //{
+
+        //}
     }
 }

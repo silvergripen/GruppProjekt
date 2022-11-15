@@ -11,35 +11,37 @@ namespace bank
         int newAccount;
 
 
-        private float Balance()
+        public float Balance()
         {
-
+            Random rand = new Random();
+            balance = rand.Next(0, 100000);
             return balance;
         }
-        private float Interest()
-        {
+        //private float Interest()
+        //{
 
-            return interest;
-        }
-        private int NewAccount()
-        {
-            return newAccount;
-        }
-        private void SavingsAccount()
-        {
+        //    return interest;
+        //}
+        //private int NewAccount()
+        //{
+        //    newAccount = user1.personNr;
+        //    return newAccount;
+        //}
+        //private void SavingsAccount()
+        //{
 
-        }
-        private void Loan(float loan)
-        {
+        //}
+        //private void Loan(float loan)
+        //{
 
-            if (loan >= 5*balance)
-            {
-                Console.WriteLine("Sorry, you're not allowed to take out this loan");
-            }
-            else
-            {
-                Console.WriteLine("Approved!");
-            }
-        }
+        //    if (loan >= 5*balance)
+        //    {
+        //        Console.WriteLine("Sorry, you're not allowed to take out this loan");
+        //    }
+        //    else
+        //    {
+        //        Console.WriteLine("Approved!");
+        //    }
+        //}
     }
 }
