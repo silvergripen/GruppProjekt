@@ -6,7 +6,7 @@ namespace bank
 {
     interface IAccount
     {
-        protected double Balance(); //Ocks
+        protected double Balance(); 
         public abstract double GetInterestrate(); //Metod som overridas i <<Cheking(Bank)Account>> för <<minus interest rate (kostnad för kund)>> och <<plus>> intrerest rate i <<SavingAccount>>
     }
 }
