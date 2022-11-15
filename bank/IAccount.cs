@@ -6,6 +6,10 @@ namespace bank
 {
     interface IAccount
     {
-        int Balance();
+        float Balance();
+        float Interest();
+        int NewAccount();
+        void SavingsAccount();
+        void Loan(float loan);
     }
 }
