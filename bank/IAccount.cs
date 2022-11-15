@@ -10,6 +10,6 @@ namespace bank
         float Interest();
         int NewAccount();
         void SavingsAccount();
-        void Loan(float loan);
+        void Loan(float loan); //Hejhej-Amie
     }
 }
