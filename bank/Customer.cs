@@ -4,12 +4,15 @@ using System.Text;
 
 namespace bank
 {
-    class Customer
+    class Customer : User
     {
-        public int personNr;
-        public Customer(string username, string password)
+        public string clearance = "User";
+        public Customer(string aUsername, string aPassword, int aPersonNr, string aclearance)
         {
-
+            this.UserName = aUsername;
+            this.PassWord = aPassword;
+            this.PersonNr = aPersonNr;
+            this.clearance = aclearance;
 
         }
     }

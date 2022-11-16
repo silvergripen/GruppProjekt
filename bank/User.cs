@@ -6,11 +6,18 @@ namespace bank
 {
     class User
     {
-        public int personNr;
-        public User(string username, string password)
+        private string userName;
+        private string passWord;
+        private int personNr;
+        public string UserName { get; set; }
+        public string PassWord { get; set; }
+        public int PersonNr { get; set; }
+
+        // Bättre att ha login som metoder inne i user?
+        public bool Login()
         {
-            
-         
+            bool loggedIn = false;
+            return loggedIn;
         }
     }
 }

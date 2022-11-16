@@ -10,7 +10,7 @@ namespace bank
         float interest;
         int newAccount;
 
-
+        
         public float Balance()
         {
             Random rand = new Random();
