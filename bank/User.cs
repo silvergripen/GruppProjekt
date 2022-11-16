@@ -15,6 +15,7 @@ namespace bank
 
         // Bättre att ha login som metoder inne i user?
         // Ja, det tror jag. /Amie
+        // Okay vill bara testa detta att redigera direkt i Git. /Madde
         public bool Login()
         {
             bool loggedIn = false;
