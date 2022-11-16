@@ -14,6 +14,7 @@ namespace bank
         public string Clearence { get; set; }
 
         // Bättre att ha login som metoder inne i user?
+        // Ja, det tror jag. /Amie
         public bool Login()
         {
             bool loggedIn = false;
