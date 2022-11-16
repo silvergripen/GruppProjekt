@@ -11,6 +11,7 @@ namespace bank
             Console.Title = "PearBank application";
             LogInScreen();
         }
+        // ********************* LOGIN SCREEN NEEDS TO BE FIXED **************************************
         public void LogInScreen()
         {
             Logo();
@@ -19,9 +20,10 @@ namespace bank
             Console.WriteLine("Please enter your username: ");
             Console.WriteLine("Please enter your password: ");
         }
-
+        // ********************* LOGIN SCREEN NEEDS TO BE FIXED **************************************
         public void RunMainMenu()
         {
+            Logo();
             string prompt = "Welcome to your bank account. \n(Use the arrow keys to cycle through options and press Enter to select.";
             string[] options = { "Balance", "Accounts", "Exit" };
             Menu mainMenu = new Menu(prompt, options);

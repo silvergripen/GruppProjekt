@@ -7,11 +7,11 @@ namespace bank
     class Customer : User
     {
         public string clearance = "User";
-        public Customer(string aPersonNr, string aPassword, string aclearance)
+        public Customer(string aPersonNr, string aPassword)
         {
             this.PassWord = aPassword;
             this.PersonNr = aPersonNr;
-            this.clearance = aclearance;
+            //this.clearance = aclearance;
 
         }
     }

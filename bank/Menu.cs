@@ -20,7 +20,6 @@ namespace bank
 
         private void DisplayOptions()
         {
-            appMenu.Logo();
             Console.WriteLine(Prompt);
             for (int i = 0; i < Options.Length; i++)
             {
