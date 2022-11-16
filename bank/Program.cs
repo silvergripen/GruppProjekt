@@ -9,11 +9,13 @@ namespace bank
     {
         static void Main(string[] args)
         {
-            Application application = new Application();
-            //application.Start();
-            Account account = new Account();
-            Console.WriteLine(account.Balance());
-            //SavingAccount save1 = new SavingAccount();
+            //Application application = new Application();
+            ////application.Start();
+            //Account account = new Account();
+            //Console.WriteLine(account.Balance());
+            ////SavingAccount save1 = new SavingAccount();
+            Admin a1 = new Admin();
+            a1.CreateCustomer();
         }
     }
 }
