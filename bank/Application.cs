@@ -8,28 +8,29 @@ namespace bank
     {
         public void Start()
         {
+            // Tile of the console window
             Console.Title = "PearBank application";
-            LogInScreen();
+            LoginScreen();
         }
         // ********************* LOGIN SCREEN NEEDS TO BE FIXED **************************************
-        public void LogInScreen()
+        public void LoginScreen()
         {
+            User userLogin = new User();
             Logo();
             Console.WriteLine(@"Welcome to the PearBank app. Please enter your information.");
 
-            Console.WriteLine("Please enter your username: ");
-            Console.WriteLine("Please enter your password: ");
+            userLogin.UserInput();
         }
         // ********************* LOGIN SCREEN NEEDS TO BE FIXED **************************************
-        public void RunMainMenu()
+        public void RunCustomerMenu()
         {
             Logo();
             string prompt = "Welcome to your bank account. \n(Use the arrow keys to cycle through options and press Enter to select.";
             string[] options = { "Balance", "Accounts", "Exit" };
             Menu mainMenu = new Menu(prompt, options);
-            int MenuSelect = mainMenu.Run();
+            int menuSelect = mainMenu.Run();
 
-            switch (MenuSelect)
+            switch (menuSelect)
             {
                 case 0:
                     RunFirstChoice();
@@ -46,12 +47,12 @@ namespace bank
         private void RunFirstChoice()
         {
             Console.WriteLine("Savings");
-            RunMainMenu();
+            RunCustomerMenu();
         }
         private void RunSecondChoice()
         {
             Console.WriteLine("Accounts");
-            RunMainMenu();
+            RunCustomerMenu();
         }
         private void ExitApp()
         {
