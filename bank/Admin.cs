@@ -17,11 +17,12 @@ namespace bank
           inputPass = Console.ReadLine();
             User.Add(inputPersNm, new UserInfo
             {
-                UserPassword = inputPass,
+                passWord = inputPass,
                 IsAdmin = false
             });
             
         }
+        public void 
     }
 
 }

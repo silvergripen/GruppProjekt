@@ -7,7 +7,7 @@ namespace bank
     class UserInfo
     {
         
-        public string UserPassword { get; set; }
+        public string passWord { get; set; }
         public bool IsAdmin { get; set; }
     }
 }

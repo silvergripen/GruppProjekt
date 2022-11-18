@@ -11,20 +11,20 @@ namespace bank
         
         
         private int maxTries = 3;
-        public bool adminOut;
+        public bool clearance;
         
 
-        public bool ValidatePassword(string username, string password)
+        public bool ValidatePassword(string personNr, string password)
         {
-            return User.Any(x => x.Key == username && x.Value.UserPassword == password); //Returnar en sann 
+            return User.Any(x => x.Key == personNr && x.Value.passWord == password); //Returnar en sann 
             
 
         }
-        public void IsUser()
+        public void DefaultUser()
         {
             User.Add("123", new UserInfo
             {
-                UserPassword = "123",
+                passWord = "123",
                 IsAdmin = true
             });
         }
@@ -53,8 +53,8 @@ namespace bank
        
         public bool ValidateAdmin(string username, string password)
         {
-          adminOut = User.Any(x => x.Key == username && x.Value.IsAdmin == true); //Returnar en sann 
-          return adminOut;
+          clearance = User.Any(x => x.Key == username && x.Value.IsAdmin == true); //Returnar en sann 
+          return clearance;
 
         }
        
