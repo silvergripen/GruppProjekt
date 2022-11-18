@@ -10,7 +10,8 @@ namespace bank
         static void Main(string[] args)
         {
             Login nLogin = new Login();
-            nLogin.userInput();
+            nLogin.AddCustomer();
+            nLogin.VerifyLogin();
         }
     }
 }
