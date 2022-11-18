@@ -9,13 +9,9 @@ namespace bank
     {
         static void Main(string[] args)
         {
-            Customer cust = new Customer();
-            Console.WriteLine("Whats your personnr:");
-            string personNr = Console.ReadLine();
-            cust.AddAccount(personNr);
-
-            //Application application = new Application();
-            //application.LoginScreen();
+            Application application = new Application();
+            application.RunCustomerMenu();
+            //application.RunAdminMenu();
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 
 namespace bank
 {
@@ -14,54 +15,199 @@ namespace bank
         }
         // ********************* LOGIN SCREEN NEEDS TO BE FIXED **************************************
         public void LoginScreen()
-        {
-            User userLogin = new User();
+        {// Kommer att bli private, allt kommer starta via Start()
+            Console.Clear();
             Logo();
+            User userLogin = new User();
             Console.WriteLine(@"Welcome to the PearBank app. Please enter your information.");
 
             userLogin.UserInput();
         }
         // ********************* LOGIN SCREEN NEEDS TO BE FIXED **************************************
-        public void RunCustomerMenu()
-        {
-            Logo();
-            string prompt = "Welcome to your bank account. \n(Use the arrow keys to cycle through options and press Enter to select.";
-            string[] options = { "Balance", "Accounts", "Exit" };
-            Menu mainMenu = new Menu(prompt, options);
-            int menuSelect = mainMenu.Run();
+
+        
+        public void RunCustomerMenu() // ********************** CUSTOMER MENU ***********************************************
+        {// Kommer att bli private, bara public nu för att kunna testa utan Login()
+            Customer customerClass = new Customer();
+            string prompt = $"Welcome {customerClass.PersonNr} to your bank account. \n(Use the arrow keys to cycle through options and press Enter to select.)";
+            string[] options = { "My accounts", "Open new account", "Log out", "Exit" };
+            Menu menu = new Menu(prompt, options);
+            int menuSelect = menu.Run();
 
             switch (menuSelect)
             {
                 case 0:
-                    RunFirstChoice();
+                    Logo();
+                    customerClass.ListOfAccounts();
+                    RunCustomerMenu();
                     break;
                 case 1:
-                    RunSecondChoice();
+                    Logo();
+                    AddAccountMenu();
                     break;
                 case 2:
+                    Console.Clear();
+                    Console.WriteLine("You just logged out.");
+                    Thread.Sleep(3000);
+                    LoginScreen();
+                    break;
+                case 3:
+                    Logo();
                     ExitApp();
                     break;
             }
         }
+       
+        public void RunAdminMenu() // ********************** ADMIN MENU ***********************************************
+        {// Kommer att bli private, bara public nu för att kunna testa utan Login()
+            Admin adminClass = new Admin();
+            string prompt = $"Welcome admin {adminClass.PersonNr} to settings. \n(Use the arrow keys to cycle through options and press Enter to select.)";
+            string[] options = { "Create new customer", "Change exchange rates", "Log out", "Exit" };
+            Menu menu = new Menu(prompt, options);
+            int menuSelect = menu.Run();
 
-        private void RunFirstChoice()
-        {
-            Console.WriteLine("Savings");
-            RunCustomerMenu();
+            switch (menuSelect)
+            {
+                case 0:
+                    Logo();
+                    adminClass.AddCustomer();
+                    RunAdminMenu();
+                    break;
+                case 1:
+                    Logo();
+                    ChangeExchangeRateMenu();
+                    RunAdminMenu();
+                    break;
+                case 2:
+                    Console.Clear();
+                    Console.WriteLine("You just logged out.");
+                    Thread.Sleep(3000);
+                    LoginScreen();
+                    break;
+                case 3:
+                    Logo();
+                    ExitApp();
+                    break;
+            }
         }
-        private void RunSecondChoice()
+        private void ChangeExchangeRateMenu() // ********************** ADMINS CHANGE CURRENCY MENU ***********************************************
         {
-            Console.WriteLine("Accounts");
-            RunCustomerMenu();
+            string prompt = "What currency would you like to change?";
+            string[] options = { "SEK", "EUR", "USD", "DKK", "NOK", "ISK" };
+            Menu menu = new Menu(prompt, options);
+            int menuSelect = menu.Run();
+
+            switch (menuSelect)
+            {
+                case 0:
+                    Console.WriteLine("You have chosen SEK");
+                    Thread.Sleep(3000);
+                    RunCustomerMenu();
+                    break;
+                case 1:
+                    Console.WriteLine("You have chosen EUR");
+                    Thread.Sleep(3000);
+                    RunCustomerMenu();
+                    break;
+                case 2:
+                    Console.WriteLine("You have chosen USD");
+                    Thread.Sleep(3000);
+                    RunCustomerMenu();
+                    break;
+                case 3:
+                    Console.WriteLine("You have chosen DKK");
+                    Thread.Sleep(3000);
+                    RunCustomerMenu();
+                    break;
+                case 4:
+                    Console.WriteLine("You have chosen NOK");
+                    Thread.Sleep(3000);
+                    RunCustomerMenu();
+                    break;
+                case 5:
+                    Console.WriteLine("You have chosen ISK");
+                    Thread.Sleep(3000);
+                    RunCustomerMenu();
+                    break;
+            }
+        }
+        private void AddAccountMenu() // ********************** CUSTOMER ADD ACCONT MENU ***********************************************
+        {
+            Customer customerClass = new Customer();
+
+            string prompt = "Here you can open a new account. Please choose what kind of account you want to add";
+            string[] options = { "Checking account", "Savings account", "Go back to main menu", "Log out", "Exit" };
+            Menu menu = new Menu(prompt, options);
+            int menuSelect = menu.Run();
+
+            switch (menuSelect)
+            {
+                case 0:
+                    Logo();
+                    customerClass.AddCheckingAccount();
+                    ChooseCurrencyMenu();
+                    break;
+                case 1:
+                    Logo();
+                    customerClass.AddSavingsAccount();
+                    ChooseCurrencyMenu();
+                    break;
+                case 2:
+                    Logo();
+                    RunCustomerMenu();
+                    break;
+            }
+        }
+        private void ChooseCurrencyMenu() // ********************** CUSTOMER CHOOSE CURRENCY MENU ***********************************************
+        {
+            string prompt = "In what currency would you like to open this account?";
+            string[] options = { "SEK", "EUR", "USD", "DKK", "NOK", "ISK" };
+            Menu menu = new Menu(prompt, options);
+            int menuSelect = menu.Run();
+
+            switch (menuSelect)
+            {
+                case 0:
+                    Console.WriteLine("You have chosen SEK");
+                    Thread.Sleep(3000);
+                    RunCustomerMenu();
+                    break;
+                case 1:
+                    Console.WriteLine("You have chosen EUR");
+                    Thread.Sleep(3000);
+                    RunCustomerMenu();
+                    break;
+                case 2:
+                    Console.WriteLine("You have chosen USD");
+                    Thread.Sleep(3000);
+                    RunCustomerMenu();
+                    break;
+                case 3:
+                    Console.WriteLine("You have chosen DKK");
+                    Thread.Sleep(3000);
+                    RunCustomerMenu();
+                    break;
+                case 4:
+                    Console.WriteLine("You have chosen NOK");
+                    Thread.Sleep(3000);
+                    RunCustomerMenu();
+                    break;
+                case 5:
+                    Console.WriteLine("You have chosen ISK");
+                    Thread.Sleep(3000);
+                    RunCustomerMenu();
+                    break;
+            }
         }
         private void ExitApp()
         {
-            Console.WriteLine("Press any key to exit...");
-            Console.ReadKey(true);
+            Console.WriteLine("You have chosen to exit. The program will end.");
+            Thread.Sleep(4000); // Lets the program paus for 4 sec before ending
             Environment.Exit(0);
         }
         public void Logo()
         {
+            Console.Clear();
             Console.WriteLine(@"
  ______                   ______              _     
 (_____ \                 (____  \            | |    

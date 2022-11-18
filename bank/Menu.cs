@@ -6,8 +6,6 @@ namespace bank
 {
     class Menu
     {
-        readonly Application applicationClass = new Application();
-        Customer customerClass = new Customer();
         private int menuSelect;
         private string[] options;
         private string prompt;
@@ -21,6 +19,8 @@ namespace bank
 
         private void DisplayOptions()
         {
+            Application applicationClass = new Application();
+            applicationClass.Logo();
             // Shows the promt you've chosen to display in the constructor
             Console.WriteLine(prompt);
 

@@ -10,14 +10,14 @@ namespace bank
         private string personNr;
         private string passWord;
         private string clearance;
-        public string _PersonNr { get; set; }
-        public string _PassWord { get; set; }
-        public string _Clearence { get; set; }
+        private int maxTries = 3;
+        public string PersonNr { get => personNr; set => personNr = value; }
+        public string PassWord { get => passWord; set => passWord = value; }
+        public string Clearence { get => clearance; set => clearance = value; }
 
         private Dictionary<string, int> dPersonNr = new Dictionary<string, int>();
         private Dictionary<string, string> dUserPassword = new Dictionary<string, string>();
         private Dictionary<string, bool> dIsAdmin = new Dictionary<string, bool>();
-        private int maxTries = 3;
 
         public User()
         {
@@ -25,10 +25,11 @@ namespace bank
             dUserPassword.Add("123456-4444", "pass123");
             dIsAdmin.Add("123456-4444", true);
 
+
         }
-        public bool ValidatePassword(string _PersonNr, string _PassWord)
+        public bool ValidatePassword(string PersonNr, string PassWord)
         {
-            return dUserPassword.Any(x => x.Key == _PersonNr && x.Value == _PassWord); //Returnar en sann 
+            return dUserPassword.Any(x => x.Key == PersonNr && x.Value == PassWord); //Returnar en sann 
 
         }
 
