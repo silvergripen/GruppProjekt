@@ -9,8 +9,7 @@ namespace bank
         public Dictionary<string, UserInfo> User = new Dictionary<string, UserInfo>();
         string inputPersNm;
         string inputPass;
-        //string input;
-        //double tempValue;
+       
         
         public void AddCustomer()
         {
