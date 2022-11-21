@@ -16,5 +16,6 @@ namespace bank
         public string AccountStatement(string accountNr);
         public double InterestRate();
         public double ExchangeRate();
+        public void ChangeCurrency();
     }
 }

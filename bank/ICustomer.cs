@@ -12,8 +12,7 @@ namespace bank
         public void ListOfAccounts();
         public void TransferMyAccounts();
         public void TransferOtherAccounts();
-        public void ChangeCurrency();
         public void OverviewAllAccounts();
-        //public void AccountStatement();
+
     }
 }
