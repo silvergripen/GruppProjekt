@@ -6,27 +6,31 @@ namespace bank
 {
     class Menu
     {
-        Application appMenu = new Application();
-        private int MenuSelect;
-        private string[] Options;
-        private string Prompt;
+        private int menuSelect;
+        private string[] options;
+        private string prompt;
 
         public Menu(string prompt, string[] options)
         {
-            this.Prompt = prompt;
-            this.Options = options;
-            this.MenuSelect = 0;
+            this.prompt = prompt;
+            this.options = options;
+            this.menuSelect = 0;
         }
 
         private void DisplayOptions()
         {
-            appMenu.Logo();
-            Console.WriteLine(Prompt);
-            for (int i = 0; i < Options.Length; i++)
-            {
-                string MenuOptions = Options[i];
+            Application applicationClass = new Application();
+            applicationClass.Logo();
+            // Shows the promt you've chosen to display in the constructor
+            Console.WriteLine(prompt);
 
-                if (i == MenuSelect)
+            // Shows the menu options you've chosen to display in the array in the constructor
+            for (int i = 0; i < options.Length; i++)
+            {
+                string menuOptions = options[i];
+
+                // Highlights selected option in the meny
+                if (i == menuSelect)
                 {
                     Console.ForegroundColor = ConsoleColor.Black;
                     Console.BackgroundColor = ConsoleColor.White;
@@ -36,9 +40,10 @@ namespace bank
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.BackgroundColor = ConsoleColor.Black;
                 }
-
-                Console.WriteLine($" << {MenuOptions} >> ");
+                // Shows << >> around the selected option
+                Console.WriteLine($" << {menuOptions} >> ");
             }
+            // resets the coloring so it doesn't bleed into any other part of the program when it's running
             Console.ResetColor();
         }
 
@@ -50,29 +55,32 @@ namespace bank
                 Console.Clear();
                 DisplayOptions();
 
+                // For registering the keys pressed by the user
                 ConsoleKeyInfo keyInfo = Console.ReadKey(true);
                 keyPressed = keyInfo.Key;
 
-                // Update SelectedIndex based on arrow keys.
+                // Update MenuSelect based on arrow keys.
                 if (keyPressed == ConsoleKey.UpArrow)
                 {
-                    MenuSelect--;
-                    if (MenuSelect == -1)
+                    menuSelect--;
+                    //(Looping effect so you can loop through the menu)
+                    if (menuSelect == -1)
                     {
-                        MenuSelect = Options.Length - 1;
+                        menuSelect = options.Length - 1;
                     }
                 }
                 else if (keyPressed == ConsoleKey.DownArrow)
                 {
-                    MenuSelect++;
-                    if (MenuSelect == Options.Length)
+                    menuSelect++;
+                    if (menuSelect == options.Length)
                     {
-                        MenuSelect = 0;
+                        menuSelect = 0;
                     }
                 }
+            // As long as the Enter key is not pressed it will loop the menu
             } while (keyPressed != ConsoleKey.Enter);
 
-            return MenuSelect;
+            return menuSelect;
         }
     }
 }
