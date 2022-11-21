@@ -15,9 +15,9 @@ namespace bank
         public void AddCustomer()
         {
             Console.WriteLine("Vad är personnummeret på personen som du vill lägga till?");
-          input = Console.ReadLine();
+          input = Console.ReadLine();                                                               // inputPersNm istället för input :) / Madde
             Console.WriteLine("Vilket lösenord vill du ge till personen som ska logga in?");
-          input = Console.ReadLine();
+          input = Console.ReadLine();                                                               // inputPass istället för input :) / Madde
             User.Add(inputPersNm, new UserInfo
             {
                 passWord = inputPass,
