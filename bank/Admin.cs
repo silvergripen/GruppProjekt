@@ -4,8 +4,30 @@ using System.Text;
 
 namespace bank
 {
-    abstract class Admin : UserInfo
+   
+    class Admin : UserInfo
     {
+       
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+        
+        
+       
+        
+        
+        
         public Dictionary<string, UserInfo> User = new Dictionary<string, UserInfo>();
         string inputPersNm;
         string inputPass;
