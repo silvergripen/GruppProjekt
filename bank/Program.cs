@@ -9,9 +9,7 @@ namespace bank
     {
         static void Main(string[] args)
         {
-            Login nLogin = new Login();
-            nLogin.AddCustomer();
-            nLogin.VerifyLogin();
+           
         }
     }
 }
