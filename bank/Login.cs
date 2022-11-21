@@ -12,7 +12,8 @@ namespace bank
         
         private int maxTries = 3;
         public bool clearance;
-        
+
+
 
         public bool ValidatePassword(string personNr, string password)
         {
@@ -31,8 +32,32 @@ namespace bank
 
         public void VerifyLogin()
         {
+            
+            clearance = false;
             Console.WriteLine("Skriv ditt Personnummer");
             var inputUName = Console.ReadLine();
+            for (int i = 1; i < 100; i++)
+            {
+                
+                
+
+                if (User.ContainsKey(inputUName))
+                {
+                    Console.WriteLine("Ditt personnummer finns i systemet");
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Vi hittar inte ditt personnummer i systemet vänligen försök igen");
+                    inputUName = Console.ReadLine();
+
+                }
+            }
+                
+            
+               
+            
+            
             bool isValid;
 
             do //En loop som gör så du bara har 3 försök på dig för att logga in.
