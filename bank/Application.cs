@@ -7,6 +7,9 @@ namespace bank
 {
     class Application
     {
+        Admin adminClass = new Admin();
+        User userClass = new User();
+        
         public void Start()
         {
             // Tile of the console window
@@ -17,7 +20,6 @@ namespace bank
         private void LoginScreen() // ********************** LOGIN SCREEN ***********************************************
         {
             Logo();
-            User userClass = new User();
             Console.WriteLine("Welcome to the PearBank app.");
             userClass.DefaultUser();
             userClass.VerifyLogin();
@@ -57,7 +59,6 @@ namespace bank
        
         public void RunAdminMenu() // ********************** ADMIN MENU ***********************************************
         {// Kommer att bli private, bara public nu för att kunna testa utan Login()
-            Admin adminClass = new Admin();
             string prompt = $"Welcome to settings admin {adminClass.PersonNr}. \n(Use the arrow keys to cycle through options and press Enter to select.)";
             string[] options = { "Create new customer", "Change exchange rates", "Log out", "Exit" };
             Menu menu = new Menu(prompt, options);
@@ -133,7 +134,6 @@ namespace bank
         private void AddAccountMenu() // ********************** CUSTOMER ADD ACCONT MENU ***********************************************
         {
             Customer customerClass = new Customer();
-
             string prompt = "Here you can open a new account. Please choose what kind of account you want to add";
             string[] options = { "Checking account", "Savings account", "Go back to main menu", "Log out", "Exit" };
             Menu menu = new Menu(prompt, options);

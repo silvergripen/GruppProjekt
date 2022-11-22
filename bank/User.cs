@@ -18,13 +18,15 @@ namespace bank
 
         private bool ValidatePassword(string personNr, string password)
         {
-            return dictUser.Any(x => x.Key == personNr && x.Value.PassWord == password); //Returnar en sann 
+
+            return dictUser.Any(x => x.Key == personNr && x.Value.PassWord == password); //Returnar en sann
+                                                                                         //
         }
         public void DefaultUser()                 // Var DefaultUser tänkt som AdminUser?
         {
-            PersonNr = "123456-4444";
-            dictUser.Add(PersonNr, new User     // PersonNr borde enklast vara nyckeln right? / Madde
+            dictUser.Add("123", new User     // PersonNr borde enklast vara nyckeln right? / Madde
             {
+
                 PassWord = "0000",
                 AdminClearance = true
             });
@@ -32,26 +34,30 @@ namespace bank
 
         public void VerifyLogin()
         {
+            bool loggedIn = false;
             AdminClearance = false;
             Console.WriteLine("Skriv ditt Personnummer");
             var inputUName = Console.ReadLine();
-                          //Behövs dock kanske en foreach loop genom dictionary då om nycklen är PersonNr? / Madde
-            
-            if (dictUser.ContainsKey(inputUName))
+            while (loggedIn == false)
             {
-                Console.WriteLine("Ditt personnummer finns i systemet");
-                
-            }
-            else
-            {
-                Console.WriteLine("Vi hittar inte ditt personnummer i systemet vänligen försök igen");
-                inputUName = Console.ReadLine();
-            }
-            
+                if (dictUser.ContainsKey(inputUName))
+                {
+                    Console.WriteLine("Ditt personnummer finns i systemet");
+                    loggedIn = true;
+                }
+                else
+                {
+                    Console.WriteLine("Vi hittar inte ditt personnummer i systemet vänligen försök igen");
+                    inputUName = Console.ReadLine();
+                }
+
+            }//Behövs dock kanske en foreach loop genom dictionary då om nycklen är PersonNr? / Madde
+
             bool isValid;
 
             do //En loop som gör så du bara har 3 försök på dig för att logga in.
             {
+
                 Console.WriteLine("Skriv ditt lösenord");
                 var inputUPass = Console.ReadLine();
                 isValid = ValidatePassword(inputUName, inputUPass);

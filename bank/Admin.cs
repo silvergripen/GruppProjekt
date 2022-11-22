@@ -16,13 +16,13 @@ namespace bank
             inputPersNm = Console.ReadLine();
             Console.WriteLine("Vilket lösenord vill du ge till personen som ska logga in?");
             inputPass = Console.ReadLine();
-            dictUser.Add(inputPersNm = PersonNr, new User
+            dictUser.Add(inputPersNm, new User
             {
-                PersonNr = inputPersNm,
+                PersonNr = inputPersNm,             
                 PassWord = inputPass,
                 AdminClearance = false
             });
-            
+
             //Console.WriteLine("Here you can change the exchange rates, please press enter to go back");
             //Console.ReadKey();
         }
