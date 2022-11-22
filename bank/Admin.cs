@@ -18,11 +18,11 @@ namespace bank
             inputPass = Console.ReadLine();
             dictUser.Add(inputPersNm, new User
             {
-                PersonNr = inputPersNm,             // PersonNr borde också behöva kopplas till inputPersNm va? / Madde 
+                PersonNr = inputPersNm,             
                 PassWord = inputPass,
                 AdminClearance = false
             });
-            
+
             //Console.WriteLine("Here you can change the exchange rates, please press enter to go back");
             //Console.ReadKey();
         }

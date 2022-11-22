@@ -6,27 +6,58 @@ namespace bank
 {
     class Customer : User
     {
+        public Dictionary<string, string> dictAccounts = new Dictionary<string, string>();
 
-        public Customer()
-        {
-
-        }
-
-        public void AddAccount(string personNr)
-        {
-            this.PersonNr = personNr;
-
-
-        }
         public void AddCheckingAccount()
         {
-            Console.WriteLine("You have added a new checking account");
-            Console.ReadKey();
+            Application applicationClass = new Application();
+            applicationClass.Logo();
+
+            string prompt = "Here you can choose a slot and add an account";
+            string[] options = { "Checking account 1", "Checking account 2",
+                "Checking account 3", "Checking account 4", "Main menu"};
+            Menu menu = new Menu(prompt, options);
+            int menuSelect = menu.Run();
+
+            switch (menuSelect)
+            {
+                case 0:
+                    dictAccounts.Add(PersonNr, Account1(PersonNr));
+                    break;
+                case 1:
+                    dictAccounts.Add(PersonNr, Account2(PersonNr));
+                    break;
+                case 2:
+                    dictAccounts.Add(PersonNr, Account3(PersonNr));
+                    break;
+                case 3:
+                    dictAccounts.Add(PersonNr, Account4(PersonNr));
+                    break;
+                case 4:
+                    applicationClass.RunCustomerMenu();
+                    break;
+            }
         }
         public void AddSavingsAccount()
         {
-            Console.WriteLine("You have added a new savings account");
-            Console.ReadKey();
+            SavingsAccount savingsAccountClass = new SavingsAccount();
+            Application applicationClass = new Application();
+            applicationClass.Logo();
+
+            string prompt = "Here you can choose a slot and add an account";
+            string[] options = { "Savings account", "Main menu"};
+            Menu menu = new Menu(prompt, options);
+            int menuSelect = menu.Run();
+
+            switch (menuSelect)
+            {
+                case 0:
+                    dictAccounts.Add(PersonNr, savingsAccountClass.NewSavingsAccount1(PersonNr));
+                    break;
+                case 1:
+                    applicationClass.RunCustomerMenu();
+                    break;
+            }
         }
         public void ListOfAccounts()
         {
