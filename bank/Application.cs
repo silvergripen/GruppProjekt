@@ -19,6 +19,7 @@ namespace bank
             Logo();
             User userClass = new User();
             Console.WriteLine("Welcome to the PearBank app.");
+            userClass.DefaultUser();
             userClass.VerifyLogin();
         }
         

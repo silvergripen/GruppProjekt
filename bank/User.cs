@@ -22,9 +22,9 @@ namespace bank
         }
         public void DefaultUser()                 // Var DefaultUser tänkt som AdminUser?
         {
-            dictUser.Add("123", new User     // PersonNr borde enklast vara nyckeln right? / Madde
+            PersonNr = "123456-4444";
+            dictUser.Add(PersonNr, new User     // PersonNr borde enklast vara nyckeln right? / Madde
             {
-                //PersonNr = "123",
                 PassWord = "0000",
                 AdminClearance = true
             });

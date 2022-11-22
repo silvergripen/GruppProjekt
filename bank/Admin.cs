@@ -16,9 +16,9 @@ namespace bank
             inputPersNm = Console.ReadLine();
             Console.WriteLine("Vilket lösenord vill du ge till personen som ska logga in?");
             inputPass = Console.ReadLine();
-            dictUser.Add(inputPersNm, new User
+            dictUser.Add(inputPersNm = PersonNr, new User
             {
-                PersonNr = inputPersNm,             // PersonNr borde också behöva kopplas till inputPersNm va? / Madde 
+                PersonNr = inputPersNm,
                 PassWord = inputPass,
                 AdminClearance = false
             });
