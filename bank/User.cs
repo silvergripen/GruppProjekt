@@ -34,14 +34,16 @@ namespace bank
 
         public void VerifyLogin()
         {
+            bool loggedIn = false;
             AdminClearance = false;
             Console.WriteLine("Skriv ditt Personnummer");
             var inputUName = Console.ReadLine();
-                {
+            while (loggedIn == false)
+            {
                     if (dictUser.ContainsKey(inputUName))
                     {
                         Console.WriteLine("Ditt personnummer finns i systemet");
-                        
+                    loggedIn = true;
                     }
                     else
                     {
