@@ -7,25 +7,24 @@ namespace bank
 {
     class Admin : User
     {
-        public Dictionary<string, UserInfo> User = new Dictionary<string, UserInfo>();
         string inputPersNm;
         string inputPass;
-       
-        
+   
         public void AddCustomer()
         {
             Console.WriteLine("Vad är personnummeret på personen som du vill lägga till?");
-          inputPersNm = Console.ReadLine();
+            inputPersNm = Console.ReadLine();
             Console.WriteLine("Vilket lösenord vill du ge till personen som ska logga in?");
-          inputPass = Console.ReadLine();
-            User.Add(inputPersNm, new UserInfo
+            inputPass = Console.ReadLine();
+            dictUser.Add(inputPersNm, new User
             {
-                passWord = inputPass,
-                IsAdmin = false
+                PersonNr = inputPersNm,             // PersonNr borde också behöva kopplas till inputPersNm va? / Madde 
+                PassWord = inputPass,
+                AdminClearance = false
             });
             
-            Console.WriteLine("Here you can change the exchange rates, please press enter to go back");
-            Console.ReadKey();
+            //Console.WriteLine("Here you can change the exchange rates, please press enter to go back");
+            //Console.ReadKey();
         }
         //public void ChangeExchangeRate()
         //{
