@@ -5,13 +5,13 @@ using System.Linq;
 
 namespace bank
 {
-    class Program
+    class Program 
     {
         static void Main(string[] args)
         {
             Application application = new Application();
-            application.RunCustomerMenu();
-            //application.RunAdminMenu();
+            application.RunAdminMenu();
+            //application.Start();
         }
     }
 }

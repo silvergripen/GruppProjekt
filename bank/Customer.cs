@@ -6,7 +6,6 @@ namespace bank
 {
     class Customer : User
     {
-        public string Clearance = "kund";
 
         public Customer()
         {
