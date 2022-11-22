@@ -8,7 +8,6 @@ namespace bank
     class Application
     {
         Admin adminClass = new Admin();
-        User userClass = new User();
         
         public void Start()
         {
@@ -22,7 +21,6 @@ namespace bank
             Logo();
             Console.WriteLine("Welcome to the PearBank app.");
             adminClass.VerifyLogin();
-
         }
         
         public void RunCustomerMenu() // ********************** CUSTOMER MENU ***********************************************
@@ -70,12 +68,13 @@ namespace bank
                     Logo();
                     adminClass.AddCustomer();
                     Console.WriteLine("Customer added.");
-                    Thread.Sleep(3000);
+                    Thread.Sleep(2000);
                     RunAdminMenu();
                     break;
                 case 1:
                     Logo();
-                    ChangeExchangeRateMenu();
+                    Console.WriteLine("Here you can change exchange rates");
+                    Thread.Sleep(2000);
                     RunAdminMenu();
                     break;
                 case 2:
@@ -87,47 +86,6 @@ namespace bank
                 case 3:
                     Logo();
                     ExitApp();
-                    break;
-            }
-        }
-        private void ChangeExchangeRateMenu() // ********************** ADMINS CHANGE CURRENCY MENU ***********************************************
-        {
-            string prompt = "What currency would you like to change?";
-            string[] options = { "SEK", "EUR", "USD", "DKK", "NOK", "ISK" };
-            Menu menu = new Menu(prompt, options);
-            int menuSelect = menu.Run();
-
-            switch (menuSelect)
-            {
-                case 0:
-                    Console.WriteLine("You have chosen SEK");
-                    Thread.Sleep(3000);
-                    RunCustomerMenu();
-                    break;
-                case 1:
-                    Console.WriteLine("You have chosen EUR");
-                    Thread.Sleep(3000);
-                    RunCustomerMenu();
-                    break;
-                case 2:
-                    Console.WriteLine("You have chosen USD");
-                    Thread.Sleep(3000);
-                    RunCustomerMenu();
-                    break;
-                case 3:
-                    Console.WriteLine("You have chosen DKK");
-                    Thread.Sleep(3000);
-                    RunCustomerMenu();
-                    break;
-                case 4:
-                    Console.WriteLine("You have chosen NOK");
-                    Thread.Sleep(3000);
-                    RunCustomerMenu();
-                    break;
-                case 5:
-                    Console.WriteLine("You have chosen ISK");
-                    Thread.Sleep(3000);
-                    RunCustomerMenu();
                     break;
             }
         }
