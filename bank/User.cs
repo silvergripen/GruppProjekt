@@ -24,7 +24,7 @@ namespace bank
         {
             dictUser.Add("123", new User     // PersonNr borde enklast vara nyckeln right? / Madde
             {
-                PersonNr = "123456-4444",
+                //PersonNr = "123",
                 PassWord = "0000",
                 AdminClearance = true
             });
@@ -35,19 +35,19 @@ namespace bank
             AdminClearance = false;
             Console.WriteLine("Skriv ditt Personnummer");
             var inputUName = Console.ReadLine();
-            for (int i = 1; i < 100; i++)               //Behövs dock kanske en foreach loop genom dictionary då om nycklen är PersonNr? / Madde
+                          //Behövs dock kanske en foreach loop genom dictionary då om nycklen är PersonNr? / Madde
+            
+            if (dictUser.ContainsKey(inputUName))
             {
-                if (dictUser.ContainsKey(inputUName))
-                {
-                    Console.WriteLine("Ditt personnummer finns i systemet");
-                    break;
-                }
-                else
-                {
-                    Console.WriteLine("Vi hittar inte ditt personnummer i systemet vänligen försök igen");
-                    inputUName = Console.ReadLine();
-                }
+                Console.WriteLine("Ditt personnummer finns i systemet");
+                
             }
+            else
+            {
+                Console.WriteLine("Vi hittar inte ditt personnummer i systemet vänligen försök igen");
+                inputUName = Console.ReadLine();
+            }
+            
             bool isValid;
 
             do //En loop som gör så du bara har 3 försök på dig för att logga in.
