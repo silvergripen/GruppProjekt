@@ -21,8 +21,8 @@ namespace bank
         {
             Logo();
             Console.WriteLine("Welcome to the PearBank app.");
-            userClass.DefaultUser();
-            userClass.VerifyLogin();
+            adminClass.VerifyLogin();
+
         }
         
         public void RunCustomerMenu() // ********************** CUSTOMER MENU ***********************************************
@@ -161,6 +161,12 @@ namespace bank
         {
             Console.WriteLine("You have chosen to exit. The program will end.");
             Thread.Sleep(4000); // Lets the program paus for 4 sec before ending
+            Environment.Exit(0);
+        }
+        public void LockedScreen()
+        {
+            Console.WriteLine("You have used up all your tries. The program will end.");
+            Thread.Sleep(4000);
             Environment.Exit(0);
         }
         public void Logo()

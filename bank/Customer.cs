@@ -8,11 +8,6 @@ namespace bank
     {
         public Dictionary<string, string> dictAccounts = new Dictionary<string, string>();
 
-        public void AddAccount(string personNr)
-        {
-            this.PersonNr = personNr;
-   
-        }
         public void AddCheckingAccount()
         {
             Application applicationClass = new Application();
