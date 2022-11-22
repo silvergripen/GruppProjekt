@@ -143,12 +143,11 @@ namespace bank
                 case 0:
                     Logo();
                     customerClass.AddCheckingAccount();
-                    ChooseCurrencyMenu();
+                    Console.WriteLine($"You have added: {customerClass.dictAccounts.ContainsKey(customerClass.PersonNr)}");
                     break;
                 case 1:
                     Logo();
                     customerClass.AddSavingsAccount();
-                    ChooseCurrencyMenu();
                     break;
                 case 2:
                     Logo();
@@ -156,47 +155,7 @@ namespace bank
                     break;
             }
         }
-        private void ChooseCurrencyMenu() // ********************** CUSTOMER CHOOSE CURRENCY MENU ***********************************************
-        {
-            string prompt = "In what currency would you like to open this account?";
-            string[] options = { "SEK", "EUR", "USD", "DKK", "NOK", "ISK" };
-            Menu menu = new Menu(prompt, options);
-            int menuSelect = menu.Run();
 
-            switch (menuSelect)
-            {
-                case 0:
-                    Console.WriteLine("You have chosen SEK");
-                    Thread.Sleep(3000);
-                    RunCustomerMenu();
-                    break;
-                case 1:
-                    Console.WriteLine("You have chosen EUR");
-                    Thread.Sleep(3000);
-                    RunCustomerMenu();
-                    break;
-                case 2:
-                    Console.WriteLine("You have chosen USD");
-                    Thread.Sleep(3000);
-                    RunCustomerMenu();
-                    break;
-                case 3:
-                    Console.WriteLine("You have chosen DKK");
-                    Thread.Sleep(3000);
-                    RunCustomerMenu();
-                    break;
-                case 4:
-                    Console.WriteLine("You have chosen NOK");
-                    Thread.Sleep(3000);
-                    RunCustomerMenu();
-                    break;
-                case 5:
-                    Console.WriteLine("You have chosen ISK");
-                    Thread.Sleep(3000);
-                    RunCustomerMenu();
-                    break;
-            }
-        }
         private void ExitApp()
         {
             Console.WriteLine("You have chosen to exit. The program will end.");
