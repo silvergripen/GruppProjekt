@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace bank
 {
-    class Program
+    class Program 
     {
         static void Main(string[] args)
         {
