@@ -50,7 +50,7 @@ namespace bank
                 if (dictUser.ContainsKey(inputPersonNr))
                 {
                     Console.WriteLine("Your social security number is correct.");
-                    Thread.Sleep(2000);
+                    Thread.Sleep(2500);
                     loggedIn = true;
                 }
                 else
@@ -75,20 +75,20 @@ namespace bank
                     if (ValidateAdmin(inputPersonNr) == true)
                     {
                         Console.WriteLine("You are logging in as admin");
-                        Thread.Sleep(1500);
+                        Thread.Sleep(2500);
                         applicationClass.RunAdminMenu();
                     }
                     else
                     {
                         Console.WriteLine("You are logging in as a customer");
-                        Thread.Sleep(1500);
+                        Thread.Sleep(2500);
                         applicationClass.RunCustomerMenu();
                     }
                 }
                 if (maxTries >= 1)                                                 
                 {
                     Console.WriteLine("Sorry, wrong password. \nYou now have: " + maxTries + " tries left.");
-                    Thread.Sleep(2500);
+                    Thread.Sleep(3000);
                 }
             }
             while (maxTries >= 1 && isValid == false);

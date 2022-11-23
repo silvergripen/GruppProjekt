@@ -65,7 +65,7 @@ namespace bank
                     Logo();
                     adminClass.AddCustomer();
                     Console.WriteLine("Customer added.");
-                    Thread.Sleep(2000);
+                    Thread.Sleep(2500);
                     RunAdminMenu();
                     break;
                 case 1:
