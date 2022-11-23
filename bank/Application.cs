@@ -43,10 +43,7 @@ namespace bank
                     AddAccountMenu();
                     break;
                 case 2:
-                    Console.Clear();
-                    Console.WriteLine("You just logged out.");
-                    Thread.Sleep(3000);
-                    LoginScreen();
+                    LoggingOut();
                     break;
                 case 3:
                     Logo();
@@ -58,7 +55,7 @@ namespace bank
         public void RunAdminMenu() // ********************** ADMIN MENU ***********************************************
         {// Kommer att bli private, bara public nu för att kunna testa utan Login()
             string prompt = $"Welcome to settings admin {adminClass.PersonNr}. \n(Use the arrow keys to cycle through options and press Enter to select.)";
-            string[] options = { "Create new customer", "Change exchange rates", "Log out", "Exit" };
+            string[] options = { "Create new customer", "Log out", "Exit" };
             Menu menu = new Menu(prompt, options);
             int menuSelect = menu.Run();
 
@@ -68,22 +65,13 @@ namespace bank
                     Logo();
                     adminClass.AddCustomer();
                     Console.WriteLine("Customer added.");
-                    Thread.Sleep(2000);
+                    Thread.Sleep(2500);
                     RunAdminMenu();
                     break;
                 case 1:
-                    Logo();
-                    Console.WriteLine("Here you can change exchange rates");
-                    Thread.Sleep(2000);
-                    RunAdminMenu();
+                    LoggingOut();
                     break;
                 case 2:
-                    Console.Clear();
-                    Console.WriteLine("You just logged out.");
-                    Thread.Sleep(3000);
-                    LoginScreen();
-                    break;
-                case 3:
                     Logo();
                     ExitApp();
                     break;
@@ -114,22 +102,29 @@ namespace bank
                     break;
             }
         }
-
+        private void LoggingOut()
+        {
+            Console.Clear();
+            Console.WriteLine("You're being logged out.");
+            Thread.Sleep(3000);
+            LoginScreen();
+        }
         private void ExitApp()
         {
             Console.WriteLine("You have chosen to exit. The program will end.");
             Thread.Sleep(4000); // Lets the program paus for 4 sec before ending
             Environment.Exit(0);
         }
-        public void LockedScreen()
+        public void OutOfTries()
         {
-            Console.WriteLine("You have used up all your tries. The program will end.");
+            Console.WriteLine("You have used up all your tries. The program will restart.");
             Thread.Sleep(4000);
-            Environment.Exit(0);
+            Start();
         }
         public void Logo()
         {
             Console.Clear();
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.WriteLine(@"
  ______                   ______              _     
 (_____ \                 (____  \            | |    
@@ -138,6 +133,7 @@ namespace bank
 | |    | ____/ ___ | |   | |__)  ) ___ | | | |  _ ( 
 |_|    |_____)_____|_|   |______/\_____|_| |_|_| \_)
 ----------------------------------------------------");
+            Console.ResetColor();
         }
     }
 }

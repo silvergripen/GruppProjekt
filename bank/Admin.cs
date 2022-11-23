@@ -12,9 +12,9 @@ namespace bank
    
         public void AddCustomer()
         {
-            Console.WriteLine("Vad är personnummeret på personen som du vill lägga till?");
+            Console.WriteLine("Please enter the social security number of the customer you want to add:");
             inputPersNm = Console.ReadLine();
-            Console.WriteLine("Vilket lösenord vill du ge till personen som ska logga in?");
+            Console.WriteLine("Please enter the password you want to create for the customer:");
             inputPass = Console.ReadLine();
             dictUser.Add(inputPersNm, new User
             {

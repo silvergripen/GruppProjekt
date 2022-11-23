@@ -32,8 +32,8 @@ namespace bank
                 // Highlights selected option in the meny
                 if (i == menuSelect)
                 {
-                    Console.ForegroundColor = ConsoleColor.Black;
-                    Console.BackgroundColor = ConsoleColor.White;
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.BackgroundColor = ConsoleColor.DarkGreen;
                 }
                 else
                 {
