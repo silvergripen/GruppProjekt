@@ -10,7 +10,6 @@ namespace bank
         static void Main(string[] args)
         {
             Application application = new Application();
-            //application.RunAdminMenu();
             application.Start();
         }
     }
