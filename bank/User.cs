@@ -42,19 +42,20 @@ namespace bank
             bool loggedIn = false;
             AdminClearance = false;
 
-            Console.WriteLine("Skriv ditt Personnummer");
+            Console.WriteLine("Please enter your social security number:");
             var inputPersonNr = Console.ReadLine();
 
             while (loggedIn == false)                                           // Behöver lägga in att man bara får tre försök här också / Madde
             {
                 if (dictUser.ContainsKey(inputPersonNr))
                 {
-                    Console.WriteLine("Ditt personnummer finns i systemet");
+                    Console.WriteLine("Your social security number is correct.");
+                    Thread.Sleep(2000);
                     loggedIn = true;
                 }
                 else
                 {
-                    Console.WriteLine("Vi hittar inte ditt personnummer i systemet vänligen försök igen");
+                    Console.WriteLine("Sorry, your social security number doesn't exist, please try again.");
                     inputPersonNr = Console.ReadLine();
                 }
 
@@ -63,8 +64,9 @@ namespace bank
 
             do //En loop som gör så du bara har 3 försök på dig för att logga in.
             {
-                
-                Console.WriteLine("Skriv ditt lösenord");
+                Console.Clear();
+                applicationClass.Logo();
+                Console.WriteLine("Please enter your password:");
                 var inputPassWord = Console.ReadLine();
                 isValid = ValidatePassword(inputPersonNr, inputPassWord);
                 maxTries--;
@@ -72,25 +74,26 @@ namespace bank
                 {
                     if (ValidateAdmin(inputPersonNr) == true)
                     {
-                        Console.WriteLine("Du loggas in som admin");
-                        Thread.Sleep(2000);
+                        Console.WriteLine("You are logging in as admin");
+                        Thread.Sleep(1500);
                         applicationClass.RunAdminMenu();
                     }
                     else
                     {
-                        Console.WriteLine("Du loggas in som användare");
-                        Thread.Sleep(2000);
+                        Console.WriteLine("You are logging in as a customer");
+                        Thread.Sleep(1500);
                         applicationClass.RunCustomerMenu();
                     }
                 }
                 if (maxTries >= 1)                                                 
                 {
-                    Console.WriteLine(maxTries + " Försök kvar");
+                    Console.WriteLine("Sorry, wrong password. \nYou now have: " + maxTries + " tries left.");
+                    Thread.Sleep(2500);
                 }
             }
             while (maxTries >= 1 && isValid == false);
 
-            applicationClass.LockedScreen();
+            applicationClass.OutOfTries();
         }
 
         public bool ValidateAdmin(string a_PersonNr)
