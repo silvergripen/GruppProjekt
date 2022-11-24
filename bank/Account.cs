@@ -4,8 +4,9 @@ using System.Text;
 
 namespace bank
 {
-    class Account 
+    class Account
     {
+        public string displayInformation { get; set; }
         protected string clearingNr;
         //private string accountNr;
         protected double accountBalance;
