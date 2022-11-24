@@ -1,102 +1,59 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 
 namespace bank
 {
     class Customer : User
     {
-        public Dictionary<string, string> dictAccounts = new Dictionary<string, string>();
+        Dictionary<string, string> dictAccounts = new Dictionary<string, string>();
+        Application applicationClass = new Application();
 
         public void AddCheckingAccount()
         {
-            Application applicationClass = new Application();
-            applicationClass.Logo();
-
-            string prompt = "Here you can choose a slot and add an account";
-            string[] options = { "Checking account 1", "Checking account 2",
-                "Checking account 3", "Checking account 4", "Main menu"};
-            Menu menu = new Menu(prompt, options);
-            int menuSelect = menu.Run();
-
-            switch (menuSelect)
-            {
-                case 0:
-                    dictAccounts.Add(PersonNr, Account1(PersonNr));
-                    break;
-                case 1:
-                    dictAccounts.Add(PersonNr, Account2(PersonNr));
-                    break;
-                case 2:
-                    dictAccounts.Add(PersonNr, Account3(PersonNr));
-                    break;
-                case 3:
-                    dictAccounts.Add(PersonNr, Account4(PersonNr));
-                    break;
-                case 4:
-                    applicationClass.RunCustomerMenu();
-                    break;
-            }
+            Console.WriteLine("Please enter you social security number again:");
+            string inputPersonNr = Console.ReadLine();
+            this.PersonNr = inputPersonNr;
+            dictAccounts.Add(PersonNr, CheckingAccount(PersonNr));
+            AddedAccount();
         }
         public void AddSavingsAccount()
         {
             SavingsAccount savingsAccountClass = new SavingsAccount();
-            Application applicationClass = new Application();
-            applicationClass.Logo();
-
-            string prompt = "Here you can choose a slot and add an account";
-            string[] options = { "Savings account", "Main menu"};
-            Menu menu = new Menu(prompt, options);
-            int menuSelect = menu.Run();
-
-            switch (menuSelect)
-            {
-                case 0:
-                    dictAccounts.Add(PersonNr, savingsAccountClass.NewSavingsAccount1(PersonNr));
-                    break;
-                case 1:
-                    applicationClass.RunCustomerMenu();
-                    break;
-            }
+            Console.WriteLine("Please enter you social security number again:");
+            string inputPersonNr = Console.ReadLine();
+            this.PersonNr = inputPersonNr;
+            dictAccounts.Add(PersonNr, savingsAccountClass.NewSavingsAccount(PersonNr));
+            AddedAccount();
         }
         public void ListOfAccounts()
         {
-            Console.WriteLine(@"
-This will show a list of all your accounts.
-You'll be able to click on a specific account and interact with it.
-Click enter to go back to the main menu");
+            Console.WriteLine("This is a list of your accounts:");
+
+            foreach (var item in dictAccounts)
+            {
+                Console.WriteLine(item.Value);
+            }
+
+            Console.WriteLine();
+            Console.WriteLine("Press Enter to to back to main menu.");
             Console.ReadKey();
+            applicationClass.RunCustomerMenu();
         }
-        private string Account1(string personNr)
+        public string CheckingAccount(string personNr)
         {
             Account accountClass = new Account();
-            string savingsAccount1 = "1";
+            string CheckingAccount = "1";
             PersonNr = personNr;
-            return $"{accountClass.clearingNr}, {personNr}-{savingsAccount1}";
+            return $"{accountClass.clearingNr}, {personNr}-{CheckingAccount}";
+        }
+        public void AddedAccount()
+        {
+            Console.WriteLine("You have added a new account.");
+            Thread.Sleep(3000);
+            applicationClass.RunCustomerMenu();
         }
 
-        private string Account2(string personNr)
-        {
-            Account accountClass = new Account();
-            string savingsAccount2 = "2";
-            PersonNr = personNr;
-            return $"{accountClass.clearingNr}, {personNr}-{savingsAccount2}";
-        }
-
-        private string Account3(string personNr)
-        {
-            Account accountClass = new Account();
-            string savingsAccount3 = "3";
-            PersonNr = personNr;
-            return $"{accountClass.clearingNr}, {personNr}-{savingsAccount3}";
-        }
-
-        private string Account4(string personNr)
-        {
-            Account accountClass = new Account();
-            string savingsAccount4 = "4";
-            PersonNr = personNr;
-            return $"{accountClass.clearingNr}, {personNr}-{savingsAccount4}";
-        }
     } 
 }

@@ -90,7 +90,6 @@ namespace bank
                 case 0:
                     Logo();
                     customerClass.AddCheckingAccount();
-                    Console.WriteLine($"You have added: {customerClass.dictAccounts.ContainsKey(customerClass.PersonNr)}");
                     break;
                 case 1:
                     Logo();

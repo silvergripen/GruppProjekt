@@ -14,33 +14,9 @@ namespace bank
         public double AccountBalance { get => accountBalance; set => accountBalance = value; }
         public double DefaultCurrency_SEK { get => defaultCurrency_SEK; set => defaultCurrency_SEK = value; }
 
-
-        public void AccountStatement()
-        {
-            
-        }
-
         public double Balance(string personNr, string accountNr)
         {
             return AccountBalance;
-        }
-
-        public void Overview()
-        {
-            
-        }
-
-        public void InterestRate()
-        {
-
-        }
-        public void ExchangeRate()
-        {
-
-        }
-        public void ChangeCurrency()
-        {
-
         }
         
     }

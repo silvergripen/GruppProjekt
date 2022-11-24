@@ -16,7 +16,7 @@ namespace bank
         public bool AdminClearance { get; set; }
 
         public Dictionary<string, User> dictUser = new Dictionary<string, User>();
-
+        
         private bool ValidatePassword(string aPersonNr, string aPassWord)
         {
             this.PersonNr = aPersonNr;
