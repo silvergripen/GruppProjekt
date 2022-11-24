@@ -8,7 +8,7 @@ namespace bank
     class Application
     {
         Admin adminClass = new Admin();
-        
+
         public void Start()
         {
             // Tile of the console window
@@ -23,10 +23,10 @@ namespace bank
             adminClass.VerifyLogin();
         }
         
-        public void RunCustomerMenu() // ********************** CUSTOMER MENU ***********************************************
+        public void RunCustomerMenu(Customer user) // ********************** CUSTOMER MENU ***********************************************
         {// Kommer att bli private, bara public nu för att kunna testa utan Login()
-            Customer customerClass = new Customer();
-            string prompt = $"Welcome {customerClass.PersonNr} to your bank account. \n(Use the arrow keys to cycle through options and press Enter to select.)";
+
+            string prompt = $"Welcome {user.PersonNr} to your bank account. \n(Use the arrow keys to cycle through options and press Enter to select.)";
             string[] options = { "My accounts", "Open new account", "Log out", "Exit" };
             Menu menu = new Menu(prompt, options);
             int menuSelect = menu.Run();
@@ -35,12 +35,12 @@ namespace bank
             {
                 case 0:
                     Logo();
-                    customerClass.ListOfAccounts();
-                    RunCustomerMenu();
+                    user.ListOfAccounts(user);
+                    RunCustomerMenu(user);
                     break;
                 case 1:
                     Logo();
-                    AddAccountMenu();
+                    AddAccountMenu(user);
                     break;
                 case 2:
                     LoggingOut();
@@ -77,9 +77,8 @@ namespace bank
                     break;
             }
         }
-        private void AddAccountMenu() // ********************** CUSTOMER ADD ACCONT MENU ***********************************************
+        private void AddAccountMenu(Customer user) // ********************** CUSTOMER ADD ACCOUNT MENU ***********************************************
         {
-            Customer customerClass = new Customer();
             string prompt = "Here you can open a new account. Please choose what kind of account you want to add";
             string[] options = { "Checking account", "Savings account", "Go back to main menu", "Log out", "Exit" };
             Menu menu = new Menu(prompt, options);
@@ -89,15 +88,15 @@ namespace bank
             {
                 case 0:
                     Logo();
-                    customerClass.AddCheckingAccount();
+                    user.AddCheckingAccount(user);
                     break;
                 case 1:
                     Logo();
-                    customerClass.AddSavingsAccount();
+                    user.AddSavingsAccount(user);
                     break;
                 case 2:
                     Logo();
-                    RunCustomerMenu();
+                    RunCustomerMenu(user);
                     break;
             }
         }

@@ -16,7 +16,7 @@ namespace bank
             inputPersNm = Console.ReadLine();
             Console.WriteLine("Please enter the password you want to create for the customer:");
             inputPass = Console.ReadLine();
-            dictUser.Add(inputPersNm, new User
+            userList.Add(new Customer
             {
                 PersonNr = inputPersNm,             
                 PassWord = inputPass,

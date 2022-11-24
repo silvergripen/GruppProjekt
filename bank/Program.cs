@@ -12,7 +12,7 @@ namespace bank
         {
             Application application = new Application();
             //application.Start();
-            application.RunCustomerMenu();
+            application.Start();
             
 
             // ************** Här funkar det att lägga till nya konton med samma kod men inte i menyerna *******************

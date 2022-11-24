@@ -7,26 +7,31 @@ namespace bank
 {
     class Customer : User
     {
-        List<string> AccountList = new List<string>();
-        List<string> SavingsAccountList = new List<string>();
-        //Dictionary<string, string> dictAccounts = new Dictionary<string, string>();
+        List<SavingsAccount> SavingsAccountList = new List<SavingsAccount>();
+        List<CheckingAccount> CheckingAccountList = new List<CheckingAccount>();
+
         Application applicationClass = new Application();
-        public void AddCheckingAccount()
+        public void AddCheckingAccount(Customer user)
         {
             Console.WriteLine("Please enter you social security number again:");
             string inputPersonNr = Console.ReadLine();
-            this.PersonNr = inputPersonNr;
+
+            //if(inputPersonNr != user.PersonNr)
+            //{
+            //    Console.WriteLine("Incorrect social security number");
+            //}
 
             // Behöver felhantering
             Console.WriteLine("Please enter the amount of money you want to add to your account in numbers:");
-            double inputAcocuntBalanse = Double.Parse(Console.ReadLine());
-            CheckingAccount checkingAccount = new CheckingAccount(inputAcocuntBalanse);
+            double inputAccountBalance = Double.Parse(Console.ReadLine());
+            CheckingAccount checkingAccount = new CheckingAccount(inputAccountBalance);
             
             string addCheckingAccount = checkingAccount.NewCheckingAccount(PersonNr);
-            AccountList.Add(addCheckingAccount);
-            AddedAccount();
+            checkingAccount.displayInformation = addCheckingAccount;
+            user.CheckingAccountList.Add(checkingAccount);
+            AddedAccount(user);
         }
-        public void AddSavingsAccount()
+        public void AddSavingsAccount(Customer user)
         {
             Console.WriteLine("Please enter you social security number again:");
             string inputPersonNr = Console.ReadLine();
@@ -34,38 +39,39 @@ namespace bank
 
             // Behöver felhantering
             Console.WriteLine("Please enter the amount of money you want to add to your account in numbers:");
-            double inputAcocuntBalanse = Double.Parse(Console.ReadLine());
-            SavingsAccount savingsAccount = new SavingsAccount(inputAcocuntBalanse);
+            double inputAccountBalance = Double.Parse(Console.ReadLine());
+            SavingsAccount savingsAccount = new SavingsAccount(inputAccountBalance);
 
             string addSavingsAccount = savingsAccount.NewSavingsAccount(PersonNr);
-            AccountList.Add(addSavingsAccount);
-            AddedAccount();
+            savingsAccount.displayInformation = addSavingsAccount;
+            user.SavingsAccountList.Add(savingsAccount);
+            AddedAccount(user);
         }
-        public void ListOfAccounts()
+        public void ListOfAccounts(Customer user)
         {
             Console.WriteLine("This is a list of your checking accounts:");
 
-            foreach (string cAccount in AccountList)
+            foreach (CheckingAccount cAccount in user.CheckingAccountList)
             {
-                Console.WriteLine(cAccount);
+                Console.WriteLine(cAccount.displayInformation);
             }
 
             Console.WriteLine("\nThis is a list of your savings accounts:");
-            foreach (string sAccount in SavingsAccountList)
+            foreach (SavingsAccount sAccount in user.SavingsAccountList)
             {
-                Console.WriteLine(sAccount);
+                Console.WriteLine(sAccount.displayInformation);
             }
 
             Console.WriteLine("\nPress Enter to to back to main menu.");
             Console.ReadKey();
-            applicationClass.RunCustomerMenu();
+            applicationClass.RunCustomerMenu(user);
         }
 
-        public void AddedAccount()
+        public void AddedAccount(Customer user)
         {
             Console.WriteLine("You have added a new account.");
             Thread.Sleep(3000);
-            applicationClass.RunCustomerMenu();
+            applicationClass.RunCustomerMenu(user);
         }
 
     } 

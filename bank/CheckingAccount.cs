@@ -9,15 +9,14 @@ namespace bank
         public CheckingAccount(double aAccountBalance)
         {
             this.clearingNr = "9874-5";
-            this.AccountBalance = accountBalance;
-            aAccountBalance = 0;
+            this.AccountBalance = aAccountBalance;
         }
         public string NewCheckingAccount(string personNr)
         {
             Customer customer = new Customer();
             string CheckingAccount = "1";
             customer.PersonNr = personNr;
-            return $"{clearingNr}, {personNr}-{CheckingAccount}";
+            return $"{clearingNr}, {personNr}-{CheckingAccount}, Balance: ${accountBalance}";
         }
     }
 }
