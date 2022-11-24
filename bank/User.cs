@@ -16,7 +16,6 @@ namespace bank
         public bool AdminClearance { get; set; }
 
         public List<User> userList = new List<User>();
-        public List<Customer> customerList = new List<Customer>();
 
         public Dictionary<string, User> dictUser = new Dictionary<string, User>();
         
