@@ -1,102 +1,72 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 
 namespace bank
 {
     class Customer : User
     {
-        public Dictionary<string, string> dictAccounts = new Dictionary<string, string>();
-
+        List<string> AccountList = new List<string>();
+        List<string> SavingsAccountList = new List<string>();
+        //Dictionary<string, string> dictAccounts = new Dictionary<string, string>();
+        Application applicationClass = new Application();
         public void AddCheckingAccount()
         {
-            Application applicationClass = new Application();
-            applicationClass.Logo();
+            Console.WriteLine("Please enter you social security number again:");
+            string inputPersonNr = Console.ReadLine();
+            this.PersonNr = inputPersonNr;
 
-            string prompt = "Here you can choose a slot and add an account";
-            string[] options = { "Checking account 1", "Checking account 2",
-                "Checking account 3", "Checking account 4", "Main menu"};
-            Menu menu = new Menu(prompt, options);
-            int menuSelect = menu.Run();
-
-            switch (menuSelect)
-            {
-                case 0:
-                    dictAccounts.Add(PersonNr, Account1(PersonNr));
-                    break;
-                case 1:
-                    dictAccounts.Add(PersonNr, Account2(PersonNr));
-                    break;
-                case 2:
-                    dictAccounts.Add(PersonNr, Account3(PersonNr));
-                    break;
-                case 3:
-                    dictAccounts.Add(PersonNr, Account4(PersonNr));
-                    break;
-                case 4:
-                    applicationClass.RunCustomerMenu();
-                    break;
-            }
+            // Behöver felhantering
+            Console.WriteLine("Please enter the amount of money you want to add to your account in numbers:");
+            double inputAcocuntBalanse = Double.Parse(Console.ReadLine());
+            CheckingAccount checkingAccount = new CheckingAccount(inputAcocuntBalanse);
+            
+            string addCheckingAccount = checkingAccount.NewCheckingAccount(PersonNr);
+            AccountList.Add(addCheckingAccount);
+            AddedAccount();
         }
         public void AddSavingsAccount()
         {
-            SavingsAccount savingsAccountClass = new SavingsAccount();
-            Application applicationClass = new Application();
-            applicationClass.Logo();
+            Console.WriteLine("Please enter you social security number again:");
+            string inputPersonNr = Console.ReadLine();
+            this.PersonNr = inputPersonNr;
 
-            string prompt = "Here you can choose a slot and add an account";
-            string[] options = { "Savings account", "Main menu"};
-            Menu menu = new Menu(prompt, options);
-            int menuSelect = menu.Run();
+            // Behöver felhantering
+            Console.WriteLine("Please enter the amount of money you want to add to your account in numbers:");
+            double inputAcocuntBalanse = Double.Parse(Console.ReadLine());
+            SavingsAccount savingsAccount = new SavingsAccount(inputAcocuntBalanse);
 
-            switch (menuSelect)
-            {
-                case 0:
-                    dictAccounts.Add(PersonNr, savingsAccountClass.NewSavingsAccount1(PersonNr));
-                    break;
-                case 1:
-                    applicationClass.RunCustomerMenu();
-                    break;
-            }
+            string addSavingsAccount = savingsAccount.NewSavingsAccount(PersonNr);
+            AccountList.Add(addSavingsAccount);
+            AddedAccount();
         }
         public void ListOfAccounts()
         {
-            Console.WriteLine(@"
-This will show a list of all your accounts.
-You'll be able to click on a specific account and interact with it.
-Click enter to go back to the main menu");
+            Console.WriteLine("This is a list of your checking accounts:");
+
+            foreach (string cAccount in AccountList)
+            {
+                Console.WriteLine(cAccount);
+            }
+
+            Console.WriteLine("\nThis is a list of your savings accounts:");
+            foreach (string sAccount in SavingsAccountList)
+            {
+                Console.WriteLine(sAccount);
+            }
+
+            Console.WriteLine("\nPress Enter to to back to main menu.");
             Console.ReadKey();
-        }
-        private string Account1(string personNr)
-        {
-            Account accountClass = new Account();
-            string savingsAccount1 = "1";
-            PersonNr = personNr;
-            return $"{accountClass.clearingNr}, {personNr}-{savingsAccount1}";
+            applicationClass.RunCustomerMenu();
         }
 
-        private string Account2(string personNr)
+        public void AddedAccount()
         {
-            Account accountClass = new Account();
-            string savingsAccount2 = "2";
-            PersonNr = personNr;
-            return $"{accountClass.clearingNr}, {personNr}-{savingsAccount2}";
+            Console.WriteLine("You have added a new account.");
+            Thread.Sleep(3000);
+            applicationClass.RunCustomerMenu();
         }
 
-        private string Account3(string personNr)
-        {
-            Account accountClass = new Account();
-            string savingsAccount3 = "3";
-            PersonNr = personNr;
-            return $"{accountClass.clearingNr}, {personNr}-{savingsAccount3}";
-        }
-
-        private string Account4(string personNr)
-        {
-            Account accountClass = new Account();
-            string savingsAccount4 = "4";
-            PersonNr = personNr;
-            return $"{accountClass.clearingNr}, {personNr}-{savingsAccount4}";
-        }
     } 
 }
