@@ -13,23 +13,44 @@ namespace bank
         Application applicationClass = new Application();
         public void AddCheckingAccount(Customer user)
         {
-            Console.WriteLine("Please enter you social security number again:");
-            string inputPersonNr = Console.ReadLine();
+            CheckingPersonNr(user);
 
-            //if(inputPersonNr != user.PersonNr)
-            //{
-            //    Console.WriteLine("Incorrect social security number");
-            //}
-
-            // Behöver felhantering
             Console.WriteLine("Please enter the amount of money you want to add to your account in numbers:");
-            double inputAccountBalance = Double.Parse(Console.ReadLine());
-            CheckingAccount checkingAccount = new CheckingAccount(inputAccountBalance);
+            double inputBalance = Double.Parse(Console.ReadLine());
+            CheckingAccount checkingAccount = new CheckingAccount(inputBalance);
             
-            string addCheckingAccount = checkingAccount.NewCheckingAccount(PersonNr);
+            string addCheckingAccount = checkingAccount.NewCheckingAccount(user.PersonNr);
             checkingAccount.displayInformation = addCheckingAccount;
             user.CheckingAccountList.Add(checkingAccount);
             AddedAccount(user);
+        }
+        private void CheckingPersonNr(Customer user)
+        {
+            string cInputPersonNr;
+            Application applicationClass = new Application();
+            do
+            {
+                Console.WriteLine("Please enter you social security number again:");
+                cInputPersonNr = Console.ReadLine();
+                foreach (User personNr in userList.FindAll(item => item.PersonNr == cInputPersonNr)) { }
+                if (user.PersonNr == cInputPersonNr)
+                {
+                    Console.WriteLine("Correct social security number");
+                }
+                else
+                {
+                    maxTries--;
+                    Console.WriteLine($"Incorrect social security number, you have {maxTries} tries left");
+                    Thread.Sleep(1500);
+                }
+                if (maxTries == 0)
+                {
+                    Console.WriteLine("Sorry the social security number doesn't exist, you will be logged out.");
+                    Thread.Sleep(2000);
+                    applicationClass.Start();
+                }
+            }
+            while (cInputPersonNr != PersonNr && maxTries >= 1);
         }
         public void AddSavingsAccount(Customer user)
         {
