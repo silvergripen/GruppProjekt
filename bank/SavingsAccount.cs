@@ -12,12 +12,12 @@ namespace bank
             this.clearingNr = "9874-5";
             this.AccountBalance = aAccountBalance;
         }
-        public string NewSavingsAccount(string personNr)
+        public string NewSavingsAccount(string aPersonNr)
         {
-            User userClass = new User();
-            userClass.PersonNr = personNr;
+            Customer customer = new Customer();
+            customer.PersonNr = aPersonNr;
             string savingsAccount = "1-1";
-            return $"{clearingNr}, {personNr}-{savingsAccount}, Balance: ${accountBalance}, Savings Rate: ${SavingsRate}";
+            return $"{clearingNr}, {aPersonNr}-{savingsAccount}, Balance: {AccountBalance} kr, Savings Rate: {SavingsRate} %";
         }
     }
 }

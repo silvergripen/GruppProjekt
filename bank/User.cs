@@ -15,13 +15,13 @@ namespace bank
         public string PassWord { get => passWord; set => passWord = value; }
         public bool AdminClearance { get; set; }
 
-        public List<User> userList = new List<User>();
- 
-        private User ValidatePassword(string aPersonNr, string aPassword)
+        public List<Customer> userList = new List<Customer>();
+
+        private Customer ValidatePassword(string aPersonNr, string aPassword)
         {
-            foreach(User user in userList)
+            foreach(Customer user in userList)
             {
-                if(user.personNr == aPersonNr && user.passWord == aPassword)
+                if(user.PersonNr == aPersonNr && user.PassWord == aPassword)
                 {
                     return user;
                 }
@@ -31,9 +31,9 @@ namespace bank
 
         public void AdminUser()
         {
-            userList.Add(new User
+            userList.Add(new Customer
             {
-                personNr = "123",
+                PersonNr = "123",
                 PassWord = "0000",
                 AdminClearance = true
             });
@@ -42,7 +42,7 @@ namespace bank
         public void VerifyLogin()
         {
             Application applicationClass = new Application();
-            AdminUser();                                               
+            AdminUser();
             bool isValid;
             bool loggedIn = false;
             AdminClearance = false;
@@ -50,29 +50,29 @@ namespace bank
             Console.WriteLine("Please enter your social security number:");
             var inputPersonNr = Console.ReadLine();
 
-            while (loggedIn == false)                                         
+            while (loggedIn != true)                                         
             {
-                foreach(var user in userList)
+                foreach(var iUser in userList)
                 { 
-                    if (user.personNr == inputPersonNr)
+                    if (iUser.PersonNr == inputPersonNr)
                         {
                             Console.WriteLine("Your social security number is correct.");
                             Thread.Sleep(2500);
                             loggedIn = true;
                             break;
                     }
-                    else
-                    {
-                        Console.WriteLine("Sorry, your social security number doesn't exist, please try again.");
-                        inputPersonNr = Console.ReadLine();
-                    }
+                }
+                if(loggedIn != true)
+                {
+                    Console.WriteLine("Sorry, your social security number doesn't exist, please try again. Input social security number:");
+                    inputPersonNr = Console.ReadLine();
                 }
             }
 
+            Console.Clear();
+            applicationClass.Logo();
             do
             {
-                Console.Clear();
-                applicationClass.Logo();
                 Console.WriteLine("Please enter your password:");
                 var inputPassWord = Console.ReadLine();
                 var user = ValidatePassword(inputPersonNr, inputPassWord);
@@ -103,32 +103,24 @@ namespace bank
                 if (maxTries >= 1)                                                 
                 {
                     Console.WriteLine("Sorry, wrong password. \nYou now have: " + maxTries + " tries left.");
-                    Thread.Sleep(3000);
+                    Thread.Sleep(2000);
                 }
             }
             while (maxTries >= 1 && isValid == false);
 
-            OutOfTries();
+            applicationClass.OutOfTries();
         }
 
         public bool ValidateAdmin(string personNr)
         {
-            foreach (User user in userList)
+            foreach (Customer user in userList)
             {
-                if (user.personNr == personNr )
+                if (user.PersonNr == personNr )
                 {
                     return user.AdminClearance;
                 }
             }
             return false;
-        }
-
-        protected void OutOfTries()
-        {
-            Application applicationClass = new Application();
-            Console.WriteLine("You have used up all your tries. The program will restart.");
-            Thread.Sleep(4000);
-            applicationClass.Start();
         }
     }
 }

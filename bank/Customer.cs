@@ -9,8 +9,8 @@ namespace bank
     {
         List<SavingsAccount> SavingsAccountList = new List<SavingsAccount>();
         List<CheckingAccount> CheckingAccountList = new List<CheckingAccount>();
+        Application application = new Application();
 
-        Application applicationClass = new Application();
         public void AddCheckingAccount(Customer user)
         {
             CheckingPersonNr(user);
@@ -22,7 +22,8 @@ namespace bank
             string addCheckingAccount = checkingAccount.NewCheckingAccount(user.PersonNr);
             checkingAccount.displayInformation = addCheckingAccount;
             user.CheckingAccountList.Add(checkingAccount);
-            AddedAccount(user);
+            Console.WriteLine("You have added a new checking account.");
+            GoToCustomerMenu(user);
         }
         public void AddSavingsAccount(Customer user)
         {
@@ -35,17 +36,18 @@ namespace bank
             string addSavingsAccount = savingsAccount.NewSavingsAccount(PersonNr);
             savingsAccount.displayInformation = addSavingsAccount;
             user.SavingsAccountList.Add(savingsAccount);
-            AddedAccount(user);
+            Console.WriteLine("You have added a new savings account.");
+            GoToCustomerMenu(user);
         }
         private void CheckingPersonNr(Customer user)
         {
             string cInputPersonNr;
-            Application applicationClass = new Application();
+
             do
             {
                 Console.WriteLine("Please enter you social security number again:");
                 cInputPersonNr = Console.ReadLine();
-                foreach (User personNr in userList.FindAll(item => item.PersonNr == cInputPersonNr)) { }
+                foreach (Customer personNr in userList.FindAll(item => item.PersonNr == cInputPersonNr)) { }
                 if (user.PersonNr == cInputPersonNr)
                 {
                     Console.WriteLine("Correct social security number");
@@ -60,7 +62,7 @@ namespace bank
                 {
                     Console.WriteLine("Sorry the social security number doesn't exist, you will be logged out.");
                     Thread.Sleep(2000);
-                    applicationClass.Start();
+                    application.Start();
                 }
             }
             while (cInputPersonNr != PersonNr && maxTries >= 1);
@@ -82,14 +84,13 @@ namespace bank
 
             Console.WriteLine("\nPress Enter to to back to main menu.");
             Console.ReadKey();
-            applicationClass.RunCustomerMenu(user);
+            GoToCustomerMenu(user);
         }
 
-        private void AddedAccount(Customer user)
+        private void GoToCustomerMenu(Customer user)
         {
-            Console.WriteLine("You have added a new account.");
             Thread.Sleep(3000);
-            applicationClass.RunCustomerMenu(user);
+            application.RunCustomerMenu(user);
         }
 
     } 
