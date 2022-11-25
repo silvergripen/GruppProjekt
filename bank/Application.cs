@@ -8,7 +8,6 @@ namespace bank
     class Application
     {
         Admin adminClass = new Admin();
-
         public void Start()
         {
             Console.Title = "PearBank application";
@@ -110,6 +109,12 @@ namespace bank
             Console.WriteLine("You have chosen to exit. The program will end.");
             Thread.Sleep(4000);
             Environment.Exit(0);
+        }
+        public void OutOfTries()
+        {
+            Console.WriteLine("You have used up all your tries. The program will restart.");
+            Thread.Sleep(4000);
+            Start();
         }
         public void Logo()
         {

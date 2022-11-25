@@ -21,6 +21,7 @@ namespace bank
         {
             Application applicationClass = new Application();
             applicationClass.Logo();
+
             // Shows the promt you've chosen to display in the constructor
             Console.WriteLine(prompt);
 
