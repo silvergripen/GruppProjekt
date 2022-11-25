@@ -22,17 +22,7 @@ namespace bank
                 PassWord = inputPass,
                 AdminClearance = false
             });
-
-            //Console.WriteLine("Here you can change the exchange rates, please press enter to go back");
-            //Console.ReadKey();
         }
-        //public void ChangeExchangeRate()
-        //{
-        //    Console.WriteLine("Vad ligger Euron på nu?");
-        //    input = Console.ReadLine();
-        //    tempValue = double.Parse(input, double);
-        //    dictExchangeRate["EUR"] = input;
-        //}
     }
 
 }
