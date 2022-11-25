@@ -20,7 +20,7 @@ namespace bank
             Console.WriteLine("Welcome to the PearBank app.");
             adminClass.VerifyLogin();
         }
-        
+
         public void RunCustomerMenu(Customer user)
         {
             string prompt = $"Welcome {user.PersonNr} to your bank account. \n(Use the arrow keys to cycle through options and press Enter to select.)";
@@ -48,7 +48,7 @@ namespace bank
                     break;
             }
         }
-       
+
         public void RunAdminMenu()
         {
             string prompt = $"Welcome to settings admin {adminClass.PersonNr}. \n(Use the arrow keys to cycle through options and press Enter to select.)";
@@ -74,7 +74,7 @@ namespace bank
                     break;
             }
         }
-        private void AddAccountMenu(Customer user)
+        public void AddAccountMenu(Customer user)
         {
             string prompt = "Here you can open a new account. Please choose what kind of account you want to add";
             string[] options = { "Checking account", "Savings account", "Go back to main menu", "Log out", "Exit" };

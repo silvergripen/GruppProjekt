@@ -69,10 +69,10 @@ namespace bank
                 }
             }
 
+            Console.Clear();
+            applicationClass.Logo();
             do
             {
-                Console.Clear();
-                applicationClass.Logo();
                 Console.WriteLine("Please enter your password:");
                 var inputPassWord = Console.ReadLine();
                 var user = ValidatePassword(inputPersonNr, inputPassWord);
@@ -103,7 +103,7 @@ namespace bank
                 if (maxTries >= 1)                                                 
                 {
                     Console.WriteLine("Sorry, wrong password. \nYou now have: " + maxTries + " tries left.");
-                    Thread.Sleep(2500);
+                    Thread.Sleep(2000);
                 }
             }
             while (maxTries >= 1 && isValid == false);
