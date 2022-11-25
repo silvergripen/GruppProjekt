@@ -6,7 +6,7 @@ namespace bank
 {
     class SavingsAccount : Account
     {
-        private double SavingsRate = 2;
+        private double savingsRate = 2;
         public SavingsAccount(double aAccountBalance)
         {
             this.clearingNr = "9874-5";
@@ -17,7 +17,7 @@ namespace bank
             Customer customer = new Customer();
             customer.PersonNr = aPersonNr;
             string savingsAccount = "1-1";
-            return $"{clearingNr}, {aPersonNr}-{savingsAccount}, Balance: {AccountBalance} kr, Savings Rate: {SavingsRate} %";
+            return $"{clearingNr}, {aPersonNr}-{savingsAccount}, Balance: {AccountBalance} kr, Savings Rate: {savingsRate} %";
         }
     }
 }
