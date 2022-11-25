@@ -42,7 +42,7 @@ namespace bank
         private void CheckingPersonNr(Customer user)
         {
             string cInputPersonNr;
-
+            maxTries = 3;
             do
             {
                 Console.WriteLine("Please enter you social security number again:");
