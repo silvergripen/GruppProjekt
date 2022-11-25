@@ -24,6 +24,19 @@ namespace bank
             user.CheckingAccountList.Add(checkingAccount);
             AddedAccount(user);
         }
+        public void AddSavingsAccount(Customer user)
+        {
+            CheckingPersonNr(user);
+
+            Console.WriteLine("Please enter the amount of money you want to add to your account in numbers:");
+            double inputAccountBalance = Double.Parse(Console.ReadLine());
+            SavingsAccount savingsAccount = new SavingsAccount(inputAccountBalance);
+
+            string addSavingsAccount = savingsAccount.NewSavingsAccount(PersonNr);
+            savingsAccount.displayInformation = addSavingsAccount;
+            user.SavingsAccountList.Add(savingsAccount);
+            AddedAccount(user);
+        }
         private void CheckingPersonNr(Customer user)
         {
             string cInputPersonNr;
@@ -52,22 +65,6 @@ namespace bank
             }
             while (cInputPersonNr != PersonNr && maxTries >= 1);
         }
-        public void AddSavingsAccount(Customer user)
-        {
-            Console.WriteLine("Please enter you social security number again:");
-            string inputPersonNr = Console.ReadLine();
-            this.PersonNr = inputPersonNr;
-
-            // Behöver felhantering
-            Console.WriteLine("Please enter the amount of money you want to add to your account in numbers:");
-            double inputAccountBalance = Double.Parse(Console.ReadLine());
-            SavingsAccount savingsAccount = new SavingsAccount(inputAccountBalance);
-
-            string addSavingsAccount = savingsAccount.NewSavingsAccount(PersonNr);
-            savingsAccount.displayInformation = addSavingsAccount;
-            user.SavingsAccountList.Add(savingsAccount);
-            AddedAccount(user);
-        }
         public void ListOfAccounts(Customer user)
         {
             Console.WriteLine("This is a list of your checking accounts:");
@@ -88,7 +85,7 @@ namespace bank
             applicationClass.RunCustomerMenu(user);
         }
 
-        public void AddedAccount(Customer user)
+        private void AddedAccount(Customer user)
         {
             Console.WriteLine("You have added a new account.");
             Thread.Sleep(3000);

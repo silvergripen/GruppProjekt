@@ -17,16 +17,6 @@ namespace bank
 
         public List<User> userList = new List<User>();
 
-        public Dictionary<string, User> dictUser = new Dictionary<string, User>();
-        
-        //private bool ValidatePassword(string aPersonNr, string aPassWord)
-        //{
-        //    this.PersonNr = aPersonNr;
-        //    this.PassWord = aPassWord;
-        //    return dictUser.Any(x => x.Key == PersonNr && x.Value.PassWord == PassWord); //Returnar en sann
-        //                                                                                 //
-        //}
-
         private User ValidatePassword(string aPersonNr, string aPassword)
         {
             foreach(User user in userList)
@@ -38,15 +28,6 @@ namespace bank
             }
             return null;
         }
-        //public void AdminUser()                 
-        //{
-        //    PersonNr = "123";
-        //    dictUser.Add(PersonNr, new User    
-        //    {
-        //        PassWord = "0000",
-        //        AdminClearance = true
-        //    });
-        //}
 
         public void AdminUser()
         {
@@ -60,8 +41,7 @@ namespace bank
 
         public void VerifyLogin()
         {
-            Application applicationClass = new Application();
-            AdminUser();                                                        // Lade DefaultUser/AdminUser här istället så fanns den med i inlogget för mig / Madde
+            AdminUser();                                               
             bool isValid;
             bool loggedIn = false;
             AdminClearance = false;
@@ -69,7 +49,7 @@ namespace bank
             Console.WriteLine("Please enter your social security number:");
             var inputPersonNr = Console.ReadLine();
 
-            while (loggedIn == false)                                           // Behöver lägga in att man bara får tre försök här också / Madde
+            while (loggedIn == false)                                         
             {
                 foreach(var user in userList)
                 {
@@ -86,22 +66,9 @@ namespace bank
                         inputPersonNr = Console.ReadLine();
                     }
                 }
-                //if (dictUser.ContainsKey(inputPersonNr))
-                //{
-                //    Console.WriteLine("Your social security number is correct.");
-                //    Thread.Sleep(2500);
-                //    loggedIn = true;
-                //}
-                //else
-                //{
-                //    Console.WriteLine("Sorry, your social security number doesn't exist, please try again.");
-                //    inputPersonNr = Console.ReadLine();
-                //}
+            }
 
-            }//Behövs dock kanske en foreach loop genom dictionary då om nycklen är PersonNr? / Madde
-
-
-            do //En loop som gör så du bara har 3 försök på dig för att logga in.
+            do
             {
                 Console.Clear();
                 applicationClass.Logo();
@@ -140,15 +107,8 @@ namespace bank
             }
             while (maxTries >= 1 && isValid == false);
 
-            applicationClass.OutOfTries();
+            OutOfTries();
         }
-
-        //public bool ValidateAdmin(string a_PersonNr)
-        //{
-        //    this.PersonNr = a_PersonNr;
-        //    AdminClearance = dictUser.Any(x => x.Key == PersonNr && x.Value.AdminClearance == true); //Returnar en sann 
-        //    return AdminClearance;
-        //}
 
         public bool ValidateAdmin(string personNr)
         {
@@ -160,6 +120,14 @@ namespace bank
                 }
             }
             return false;
+        }
+
+        protected void OutOfTries()
+        {
+            Application applicationClass = new Application();
+            Console.WriteLine("You have used up all your tries. The program will restart.");
+            Thread.Sleep(4000);
+            applicationClass.Start();
         }
     }
 }
