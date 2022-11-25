@@ -17,8 +17,8 @@ namespace bank
 
         public List<User> userList = new List<User>();
 
-        public Dictionary<string, User> dictUser = new Dictionary<string, User>();
-        
+        // public Dictionary<string, User> dictUser = new Dictionary<string, User>(); 
+
         //private bool ValidatePassword(string aPersonNr, string aPassWord)
         //{
         //    this.PersonNr = aPersonNr;
@@ -29,9 +29,9 @@ namespace bank
 
         private User ValidatePassword(string aPersonNr, string aPassword)
         {
-            foreach(User user in userList)
+            foreach (User user in userList)
             {
-                if(user.personNr == aPersonNr && user.passWord == aPassword)
+                if (user.personNr == aPersonNr && user.passWord == aPassword)
                 {
                     return user;
                 }
@@ -71,21 +71,22 @@ namespace bank
 
             while (loggedIn == false)                                           // Behöver lägga in att man bara får tre försök här också / Madde
             {
-                foreach(var user in userList)
+                foreach (var user in userList)
                 {
-                    if(user.personNr == inputPersonNr)
+                    if (user.personNr == inputPersonNr)
                     {
                         Console.WriteLine("Your social security number is correct.");
                         Thread.Sleep(2500);
                         loggedIn = true;
                         break;
                     }
-                    else
-                    {
-                        Console.WriteLine("Sorry, your social security number doesn't exist, please try again.");
-                        inputPersonNr = Console.ReadLine();
-                    }
                 }
+                if(loggedIn != true)
+                {
+                    Console.WriteLine("Sorry, your social security number doesn't exist, please try again.");
+                    inputPersonNr = Console.ReadLine();
+                }
+
                 //if (dictUser.ContainsKey(inputPersonNr))
                 //{
                 //    Console.WriteLine("Your social security number is correct.");
@@ -108,7 +109,7 @@ namespace bank
                 Console.WriteLine("Please enter your password:");
                 var inputPassWord = Console.ReadLine();
                 var user = ValidatePassword(inputPersonNr, inputPassWord);
-                if(user == null)
+                if (user == null)
                 {
                     isValid = false;
                 }
@@ -132,7 +133,7 @@ namespace bank
                         applicationClass.RunCustomerMenu((Customer)user);
                     }
                 }
-                if (maxTries >= 1)                                                 
+                if (maxTries >= 1)
                 {
                     Console.WriteLine("Sorry, wrong password. \nYou now have: " + maxTries + " tries left.");
                     Thread.Sleep(3000);
@@ -154,7 +155,7 @@ namespace bank
         {
             foreach (User user in userList)
             {
-                if (user.personNr == personNr )
+                if (user.personNr == personNr)
                 {
                     return user.AdminClearance;
                 }
