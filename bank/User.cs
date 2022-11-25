@@ -16,7 +16,7 @@ namespace bank
         public bool AdminClearance { get; set; }
 
         public List<User> userList = new List<User>();
-
+ 
         private User ValidatePassword(string aPersonNr, string aPassword)
         {
             foreach(User user in userList)
@@ -41,6 +41,7 @@ namespace bank
 
         public void VerifyLogin()
         {
+            Application applicationClass = new Application();
             AdminUser();                                               
             bool isValid;
             bool loggedIn = false;
@@ -52,13 +53,13 @@ namespace bank
             while (loggedIn == false)                                         
             {
                 foreach(var user in userList)
-                {
-                    if(user.personNr == inputPersonNr)
-                    {
-                        Console.WriteLine("Your social security number is correct.");
-                        Thread.Sleep(2500);
-                        loggedIn = true;
-                        break;
+                { 
+                    if (user.personNr == inputPersonNr)
+                        {
+                            Console.WriteLine("Your social security number is correct.");
+                            Thread.Sleep(2500);
+                            loggedIn = true;
+                            break;
                     }
                     else
                     {
