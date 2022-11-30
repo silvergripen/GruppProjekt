@@ -33,3 +33,22 @@ and you'll have to re-add new customers in the admin menu again.**
 - Customers can open new savings accounts and see the interest rate
 
 ## Structure, classes etc.
+
+### Account class
+
+### Admin class
+
+### Application class
+
+### CheckingAccount class
+
+### Customer class
+![PearBankAccounts](https://user-images.githubusercontent.com/105611442/204928804-b3b8bc15-1278-4aaa-8381-d653b2467011.jpg)
+
+### Menu class
+
+### Program class
+
+### SavingsAccount class
+
+### User class
