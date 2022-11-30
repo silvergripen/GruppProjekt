@@ -1,4 +1,4 @@
-![The_PearBank_app](https://user-images.githubusercontent.com/105611442/204873058-79ac9c67-fea7-4517-8e4a-0bd3b40f27f6.png)
+![The_PearBank_app (1)](https://user-images.githubusercontent.com/105611442/204879086-5bf6a519-68ce-4add-8037-0878947b257c.png)
 
 ![GitHub top language](https://img.shields.io/github/languages/top/silvergripen/GruppProjekt?style=plastic)
 ![GitHub last commit](https://img.shields.io/github/last-commit/silvergripen/GruppProjekt?style=plastic)
