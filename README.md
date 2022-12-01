@@ -43,7 +43,8 @@ and you'll have to re-add new customers in the admin menu again.**
 ### CheckingAccount class
 
 ### Customer class
-![PearBankAccounts](https://user-images.githubusercontent.com/105611442/204928804-b3b8bc15-1278-4aaa-8381-d653b2467011.jpg)
+![PearBankAccounts](https://user-images.githubusercontent.com/105611442/205067220-dced0a40-4f27-4649-bc30-c1940863bea4.jpg)
+
 
 ### Menu class
 
