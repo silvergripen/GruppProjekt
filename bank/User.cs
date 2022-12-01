@@ -47,7 +47,7 @@ namespace bank
             bool loggedIn = false;
             AdminClearance = false;
 
-            Console.WriteLine("Please enter your social security number:");
+            Console.WriteLine("Please enter your social security number (YYMMDD-NNNNN):");
             var inputPersonNr = Console.ReadLine();
 
             while (loggedIn != true)                                         

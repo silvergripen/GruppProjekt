@@ -45,7 +45,7 @@ namespace bank
             maxTries = 3;
             do
             {
-                Console.WriteLine("Please enter you social security number again:");
+                Console.WriteLine("Please enter you social security number again (YYMMDD-NNNNN):");
                 cInputPersonNr = Console.ReadLine();
                 foreach (Customer personNr in userList.FindAll(item => item.PersonNr == cInputPersonNr)) { }
                 if (user.PersonNr == cInputPersonNr)
