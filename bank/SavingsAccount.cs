@@ -17,7 +17,7 @@ namespace bank
             Customer customer = new Customer();
             customer.PersonNr = aPersonNr;
             string savingsAccount = "1-1";
-            return $"{clearingNr}, {aPersonNr}-{savingsAccount}, Balance: {AccountBalance} kr, Savings Rate: {savingsRate} %";
+            return $"{clearingNr}, {aPersonNr}-{savingsAccount} \t{AccountBalance} kr\t{savingsRate} %";
         }
     }
 }

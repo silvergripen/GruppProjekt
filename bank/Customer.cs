@@ -69,20 +69,23 @@ namespace bank
         }
         public void ListOfAccounts(Customer user)
         {
-            Console.WriteLine("This is a list of your checking accounts:");
-
+            Console.WriteLine("\nThis is a list of your checking accounts:");
+            Console.WriteLine("----------------------------------------------------");
+            Console.WriteLine("Clearing, account nr\t\tBalance");
             foreach (CheckingAccount cAccount in user.CheckingAccountList)
             {
                 Console.WriteLine(cAccount.displayInformation);
             }
 
-            Console.WriteLine("\nThis is a list of your savings accounts:");
+            Console.WriteLine("\n\n\nThis is a list of your savings accounts:");
+            Console.WriteLine("----------------------------------------------------");
+            Console.WriteLine("Clearing, account nr\t\tBalance\t\tSavings rate");
             foreach (SavingsAccount sAccount in user.SavingsAccountList)
             {
                 Console.WriteLine(sAccount.displayInformation);
             }
 
-            Console.WriteLine("\nPress Enter to to back to main menu.");
+            Console.WriteLine("\n\n\nPress Enter to to back to main menu.");
             Console.ReadKey();
             GoToCustomerMenu(user);
         }
