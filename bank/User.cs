@@ -64,7 +64,7 @@ namespace bank
                 }
                 if(loggedIn != true)
                 {
-                    Console.WriteLine("Sorry, your social security number doesn't exist, please try again. Input social security number:");
+                    Console.WriteLine("Sorry, that social security number doesn't exist. \n\nPlease enter your social security number (YYMMDD-NNNNN):");
                     inputPersonNr = Console.ReadLine();
                 }
             }
@@ -102,7 +102,7 @@ namespace bank
                 }
                 if (maxTries >= 1)                                                 
                 {
-                    Console.WriteLine("Sorry, wrong password. \nYou now have: " + maxTries + " tries left.");
+                    Console.WriteLine("Sorry, wrong password. \nYou now have: " + maxTries + " tries left.\n");
                     Thread.Sleep(2000);
                 }
             }
