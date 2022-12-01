@@ -8,7 +8,8 @@
 open new accounts as a customer and get a list of your accounts with the balance shown.**
 
 
-![PearBankGif_LogIn](https://user-images.githubusercontent.com/105611442/204921552-ceb126b1-989b-4b91-9e76-782acb514ae1.gif)
+![PearBankGif_LogIn](https://user-images.githubusercontent.com/105611442/205093863-4861abd9-151b-4200-b3b6-079f35042c8e.gif)
+
 
 ## Usage
 
@@ -43,7 +44,8 @@ and you'll have to re-add new customers in the admin menu again.**
 ### CheckingAccount class
 
 ### Customer class
-![PearBankAccounts](https://user-images.githubusercontent.com/105611442/204928804-b3b8bc15-1278-4aaa-8381-d653b2467011.jpg)
+![PearBankAccounts](https://user-images.githubusercontent.com/105611442/205067220-dced0a40-4f27-4649-bc30-c1940863bea4.jpg)
+
 
 ### Menu class
 
