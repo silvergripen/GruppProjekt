@@ -36,39 +36,60 @@ and you'll have to re-add new customers in the admin menu again.**
 ## Structure - classes etc.
 
 ### Account class
-The account class holds the basic variables needed for all accounts.
+Holds the basic variables needed for all accounts.
 
-### Admin class
+### Admin class - Inherits from User
 Holds variables for input from admin when adding new customers.<br>
-Plus the method `AddCustomer()` that adds the new customers to the `List<Customer> userList` in the `User` class.
+With the method:
+- `AddCustomer()` - adds the new customers to the `List<Customer> userList` in the **User** class.
 
 ### Application class
-Constains the different menus aswell as `Start()` and similar small methods plus the ASCII-logo.
+Constains the different menus and similar small methods plus the ASCII-logo.<br>
+With the methods:
+- `Start()`
+- `LoginScreen()`
+- `RunCustomerMenu()`
+- `RunAdminMenu()`
+- `AddAccountMenu()`
+- `LoggingOut()` - Logging out the user
+- `ExitApp()`
+- `OutOfTries()` - Restarts the program when user is out of tries
+- `Logo()`
 
-### CheckingAccount class
+### CheckingAccount class - Inherits from Account
 Has a `Constructor` that holds the clearing number and account balance.<br>
-Aswell as a method for creating a `NewCheckingAccount()`.
+With the method: 
+- `NewCheckingAccount()` - creates a new checking account.
 
-### Customer class
+### Customer class - Inherits from User
 Has `List<CheckingAccount> CheckingAccountList` and `List<SavingsAccount> SavingsAccountList`.<br>
-Aswell as the methods `AddCheckingAccount()` `AddSavingsAccount()` and <br>
-`CheckingPersonNr()` that checks if the social security number exists in the `List<Customer> userList`<br>
-plus `ListOfAccounts()` that does this:
+With the methods:
+- `AddCheckingAccount()` - creates account and adds it to the list.
+- `AddSavingsAccount()` - creates account and adds it to the list.
+- `CheckingPersonNr()` - checks if the social security number exists in the `List<Customer> userList`<br>
+- `ListOfAccounts()`
 
 ![PearBankAccounts](https://user-images.githubusercontent.com/105611442/205067220-dced0a40-4f27-4649-bc30-c1940863bea4.jpg)
 
 
 ### Menu class
 Has the variables for creating the menus aswell as a `Constructor` that enables the usage of those variables.<br>
-In this class we also find the methods `DisplayOptions()` that shows the options of the menu.<br>
-`Run()` Which runs the menu and enables the usage of the arrow keys to navigate the menu.
+With the methods:
+- `DisplayOptions()` - shows the options of the menu.
+- `Run()` - runs the menu and enables the usage of the arrow keys to navigate the menu.
 
 ### Program class
-Has the `Start()` method from the `Application` class that starts the whole application.
+Has the `Start()` method from the **Application** class that starts the whole application.
 
-### SavingsAccount class
-Inherits from `Account` class plus has the variable for the savings rate.<br>
-Just like the `CheckingAccount` class it has a `Constructor` with the clearing number and account balance.<br>
-Plus a method that creates a `NewSavingsAccount()`.
+### SavingsAccount class - Inherits from Account
+Has the variable for the savings rates aswell as a `Constructor` with the clearing number and account balance.<br>
+With the method: 
+- `NewSavingsAccount()` - creates a new savings account.
 
 ### User class
+Holds the basic variables needed for all users aswell as the `List<Customer> userList`.<br>
+With the methods:
+- `ValidatePassword()` - Checks if the password matches the social security number.
+- `AdminUser()` - Creates the admin user.
+- `VerifyLogin()` - Checks if the user is able to log in with their three tries.
+- `ValidateAdmin`- Checks if the user is a admin.
