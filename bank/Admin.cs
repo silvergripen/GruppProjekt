@@ -7,8 +7,8 @@ namespace bank
 {
     class Admin : User
     {
-        string inputPersNm;
-        string inputPass;
+        private string inputPersNm;
+        private string inputPass;
    
         public void AddCustomer()
         {
